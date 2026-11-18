@@ -273,6 +273,37 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
 .usage .rowlab { font-size: calc(0.9 * var(--u)); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 .unote { font-size: calc(0.92 * var(--u)); color: var(--ink-3); }
 
+
+/* Slide minh họa tài liệu (phiếu, báo cáo) */
+.demo { display: grid; grid-template-columns: auto 1fr; gap: calc(2.6 * var(--u)); flex: 1; min-height: 0; align-items: stretch; }
+.doc { position: relative; display: block; border: 1px solid var(--rule); border-radius: calc(0.6 * var(--u)); overflow: hidden; background: #fff; padding: 0; cursor: zoom-in; box-shadow: 0 calc(0.4 * var(--u)) calc(1.4 * var(--u)) rgba(11,31,58,0.12); }
+.doc img { display: block; height: 100%; width: auto; }
+.doc .zoom { position: absolute; right: calc(0.7 * var(--u)); bottom: calc(0.7 * var(--u)); background: var(--navy); color: #fff; font-family: var(--font); font-size: calc(0.9 * var(--u)); font-weight: 700; padding: calc(0.35 * var(--u)) calc(0.8 * var(--u)); border-radius: 99px; }
+.doc:hover .zoom, .doc:focus-visible .zoom { background: var(--orange); }
+.docs3 { display: flex; gap: calc(1.2 * var(--u)); height: 100%; min-height: 0; }
+.docs3 .doc { height: 100%; }
+.points { display: flex; flex-direction: column; gap: calc(1.1 * var(--u)); }
+.point { display: flex; gap: calc(1.1 * var(--u)); align-items: flex-start; background: var(--surface); border: 1px solid var(--rule); border-radius: calc(0.9 * var(--u)); padding: calc(1.2 * var(--u)) calc(1.4 * var(--u)); }
+.point .pn { flex: none; width: calc(2.6 * var(--u)); height: calc(2.6 * var(--u)); border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff; font-weight: 800; font-size: calc(1.05 * var(--u)); }
+.point b { display: block; font-size: calc(1.3 * var(--u)); color: var(--navy); margin-bottom: calc(0.2 * var(--u)); }
+.point span { font-size: calc(1.08 * var(--u)); color: var(--ink-2); }
+.anon { margin-top: auto; font-size: calc(0.95 * var(--u)); color: var(--ink-3); display: flex; align-items: center; gap: calc(0.6 * var(--u)); }
+.anon i { font-style: normal; display: inline-block; padding: calc(0.2 * var(--u)) calc(0.7 * var(--u)); border-radius: 99px; background: rgba(11,31,58,0.07); color: var(--navy); font-weight: 700; }
+.callout.small { font-size: calc(1.1 * var(--u)); padding: calc(1 * var(--u)) calc(1.4 * var(--u)); margin-top: 0; }
+
+/* Hộp xem tài liệu: phóng to, lật trang */
+.viewer { position: fixed; inset: 0; z-index: 60; background: rgba(5,12,24,0.92); display: none; flex-direction: column; }
+.viewer.open { display: flex; }
+.vw-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; color: #fff; font-family: var(--font); font-size: 14px; }
+.vw-bar .t { flex: 1; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vw-bar button { min-width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(11,31,58,0.8); color: #fff; font-size: 16px; cursor: pointer; padding: 0 10px; font-family: var(--font); }
+.vw-bar button:hover { background: var(--orange); border-color: var(--orange); }
+.vw-bar button:disabled { opacity: 0.35; cursor: default; }
+.vw-scroll { flex: 1; overflow: auto; -webkit-overflow-scrolling: touch; text-align: center; padding: 0 12px 16px; touch-action: auto; }
+.vw-scroll img { width: min(100%, 980px); height: auto; background: #fff; border-radius: 4px; }
+.vw-scroll.zoomed img { width: 1818px; max-width: none; }
+.vw-note { color: #B9C6D8; font-family: var(--font); font-size: 12px; text-align: center; padding: 0 0 10px; }
+
 /* Điện thoại (màn hình hẹp): đọc dạng cuộn dọc, chữ to, lưới xếp một cột */
 @media (max-width: 760px) {
   :root { --u: 0.96vw; }
@@ -353,6 +384,17 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
   .ulist li { padding-left: calc(3.5 * var(--u)); } .ulist li::before { width: calc(1.5 * var(--u)); height: calc(1.5 * var(--u)); }
   .gains { padding: calc(3.5 * var(--u)); }
   .unote { font-size: calc(3.2 * var(--u)); }
+  .demo { grid-template-columns: 1fr !important; gap: calc(5 * var(--u)); }
+  .doc img { width: 100%; height: auto; }
+  .docs3 { height: auto; gap: calc(2.5 * var(--u)); }
+  .docs3 .doc { height: auto; flex: 1; }
+  .doc .zoom { font-size: calc(2.6 * var(--u)); padding: calc(1 * var(--u)) calc(2.2 * var(--u)); right: calc(2 * var(--u)); bottom: calc(2 * var(--u)); }
+  .points { gap: calc(3 * var(--u)); }
+  .point { padding: calc(4 * var(--u)); gap: calc(3 * var(--u)); border-radius: calc(2.5 * var(--u)); }
+  .point .pn { width: calc(8 * var(--u)); height: calc(8 * var(--u)); font-size: calc(3.4 * var(--u)); }
+  .point b { font-size: calc(4.4 * var(--u)); } .point span { font-size: calc(3.9 * var(--u)); }
+  .anon { font-size: calc(3.2 * var(--u)); margin-top: calc(2 * var(--u)); flex-wrap: wrap; }
+  .callout.small { font-size: calc(3.8 * var(--u)); padding: calc(4 * var(--u)); }
   .nav, .progress { display: none; }
 }
 
@@ -364,7 +406,7 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
   .stage { position: static; display: block; }
   .deck { width: 1600px; height: 900px; aspect-ratio: auto; position: static; container-type: normal; }
   .slide { position: relative; display: flex !important; width: 1600px; height: 900px; page-break-after: always; break-after: page; }
-  .nav, .progress, .lightbox { display: none !important; }
+  .nav, .progress, .lightbox, .viewer { display: none !important; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
@@ -381,7 +423,7 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
   <div class="wordmark"><img src="assets/brand/alm-logo-160.png" alt="ALM"><span><b>HỌC VIỆN AI LAB MASTERY</b><i>ALM</i></span></div>
   <div class="eyebrow">Hồ sơ năng lực · Case study Công ty N</div>
   <h1>CHƯƠNG TRÌNH COACHING AI CHO DOANH NGHIỆP SẢN XUẤT</h1>
-  <p class="sub">Từ đào tạo kiến thức đến năng lực vận hành: kết quả triển khai thực tế tại Công ty N, từ tháng 6/2026 đến nay.</p>
+  <p class="sub">Từ đào tạo kiến thức đến năng lực vận hành: kết quả triển khai thực tế tại Công ty N, từ giữa năm 2026 đến nay.</p>
   <div class="meta">
     <div>Đơn vị thực hiện<strong>Công ty TNHH Học viện AI Lab Mastery (ALM)</strong></div>
     <div>Tài liệu gửi<strong>PTIT – PTTC</strong></div>
@@ -394,11 +436,11 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
 <section class="slide">
   <div class="kicker"><span class="num"></span>Tóm tắt điều hành</div>
   <h2>Coaching AI dài hạn đã đưa AI vào công việc hằng ngày của Công ty N</h2>
-  <p class="lead">Từ tháng 6/2026, Học viện ALM đồng hành cùng Công ty N qua ba khóa nối tiếp: khối vận hành nhà máy, đội ngũ quản lý khối văn phòng, rồi toàn bộ nhân sự. Mục tiêu không dừng ở việc biết dùng AI, mà là thay đổi cách làm việc và để lại đội AI Mentor nội bộ.</p>
+  <p class="lead">Từ giữa năm 2026, Học viện ALM đồng hành cùng Công ty N qua ba khóa nối tiếp: khối vận hành nhà máy, đội ngũ quản lý khối văn phòng, rồi toàn bộ nhân sự. Mục tiêu không dừng ở việc biết dùng AI, mà là thay đổi cách làm việc và để lại đội AI Mentor nội bộ.</p>
   <div class="body">
     <div class="grid g4">
       <div class="kpi k1"><div class="v">3</div><div class="l">Khóa coaching nối tiếp</div><div class="d">K1 Nhà máy · K2 Quản lý văn phòng · K3 Toàn công ty</div></div>
-      <div class="kpi k2"><div class="v">8</div><div class="l">Quy trình (SOP) có nhúng AI</div><div class="d">Đang sử dụng hằng ngày tại khối K1 và K2</div></div>
+      <div class="kpi k2"><div class="v"><span class="sop-n">8</span><small>+</small></div><div class="l">Quy trình (SOP) có nhúng AI</div><div class="d">Đang dùng hằng ngày; con số tăng theo tiến độ</div></div>
       <div class="kpi k3"><div class="v">2</div><div class="l">Công cụ AI chủ lực</div><div class="d">Claude Pro và Gemini, dùng thành thạo trong công việc</div></div>
       <div class="kpi k4"><div class="v">100<small>%</small></div><div class="l">Nhân sự đạt chuẩn năng lực</div><div class="d">Ngưỡng đạt 7/10; chưa đạt làm lại đến khi đạt</div></div>
     </div>
@@ -610,6 +652,47 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
   <div class="foot"><div class="brand"><img src="assets/brand/alm-logo-160.png" alt="ALM">Học viện AI Lab Mastery (ALM) · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
 </section>
 
+<!-- MINH HỌA: PHIẾU ĐÁNH GIÁ CÁ NHÂN (ẩn danh) -->
+<section class="slide" id="phieu-ca-nhan">
+  <div class="kicker"><span class="num"></span>Minh họa · Phiếu đánh giá cá nhân</div>
+  <h2>Mỗi học viên nhận phiếu kết quả chi tiết của riêng mình</h2>
+  <div class="body" style="margin-top:calc(2 * var(--u))">
+    <div class="demo">
+      <button class="doc" data-doc="phieu" data-page="0" aria-label="Phóng to phiếu đánh giá cá nhân"><img src="assets/demo/demo-phieu-ca-nhan-nho.webp" alt="Phiếu kết quả bài tập của một học viên chưa đạt (bản minh họa đã ẩn danh)" loading="lazy" width="600" height="849"><span class="zoom">⤢ Phóng to</span></button>
+      <div class="points">
+        <div class="point"><span class="pn">1</span><div><b>Phiếu chi tiết cho từng cá nhân</b><span>Điểm từng câu, tổng điểm, xếp loại và kết quả đạt hay chưa đạt.</span></div></div>
+        <div class="point"><span class="pn">2</span><div><b>Chỉ rõ điểm yếu và góp ý</b><span>Nêu điểm mạnh, điểm cần cải thiện và hướng dẫn làm lại từng bước.</span></div></div>
+        <div class="point"><span class="pn">3</span><div><b>Chưa đạt thì làm lại</b><span>Học viên dưới 7/10 làm lại đến khi đạt; kết quả: 100% nhân sự đạt yêu cầu.</span></div></div>
+        <div class="anon"><i>Dữ liệu minh họa đã ẩn danh</i> Phiếu bài tập buổi học của một học viên chưa đạt.</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/alm-logo-160.png" alt="ALM">Học viện AI Lab Mastery (ALM) · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- MINH HỌA: BÁO CÁO TỔNG HỢP CẢ LỚP (ẩn danh) -->
+<section class="slide" id="bao-cao-lop">
+  <div class="kicker"><span class="num"></span>Minh họa · Báo cáo tổng hợp cả lớp</div>
+  <h2>Lãnh đạo doanh nghiệp theo dõi tiến độ của cả lớp</h2>
+  <div class="body" style="margin-top:calc(2 * var(--u))">
+    <div class="demo">
+      <div class="docs3">
+        <button class="doc" data-doc="baocao" data-page="0" aria-label="Phóng to báo cáo, trang 1"><img src="assets/demo/demo-bao-cao-lop-1-nho.webp" alt="Báo cáo tổng hợp cả lớp, trang 1 (bản minh họa đã ẩn danh)" loading="lazy" width="600" height="849"><span class="zoom">Trang 1</span></button>
+        <button class="doc" data-doc="baocao" data-page="1" aria-label="Phóng to báo cáo, trang 2"><img src="assets/demo/demo-bao-cao-lop-2-nho.webp" alt="Báo cáo tổng hợp cả lớp, trang 2 (bản minh họa đã ẩn danh)" loading="lazy" width="600" height="849"><span class="zoom">Trang 2</span></button>
+        <button class="doc" data-doc="baocao" data-page="2" aria-label="Phóng to báo cáo, trang 3"><img src="assets/demo/demo-bao-cao-lop-3-nho.webp" alt="Báo cáo tổng hợp cả lớp, trang 3 (bản minh họa đã ẩn danh)" loading="lazy" width="600" height="849"><span class="zoom">Trang 3</span></button>
+      </div>
+      <div class="points">
+        <div class="point"><span class="pn">1</span><div><b>Tỷ lệ đạt</b><span>Theo dõi tỷ lệ đạt của cả lớp và của từng bộ phận.</span></div></div>
+        <div class="point"><span class="pn">2</span><div><b>Phân bố điểm</b><span>Thấy rõ năng lực mạnh, yếu theo từng nhóm kỹ năng.</span></div></div>
+        <div class="point"><span class="pn">3</span><div><b>Nhóm cần hỗ trợ</b><span>Danh sách học viên cần kèm 1-1 và việc cần làm cụ thể.</span></div></div>
+        <div class="callout small"><span class="bar"></span><div>Báo cáo sau Buổi 1, trước vòng làm lại; sau kèm 1-1, <b>100% nhân sự đạt yêu cầu</b>.</div></div>
+        <div class="anon"><i>Dữ liệu minh họa đã ẩn danh</i> Bấm vào từng trang để phóng to.</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/alm-logo-160.png" alt="ALM">Học viện AI Lab Mastery (ALM) · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
 <!-- 09 ĐỘI NGŨ -->
 <section class="slide">
   <div class="kicker"><span class="num"></span>Đội ngũ triển khai</div>
@@ -642,7 +725,7 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
     <div class="res" style="flex:1">
       <div class="card"><div class="big">4<small>bộ tư duy</small></div><div><h3>Tư duy nền tảng cho toàn bộ nhân sự</h3><p>Toàn bộ nhân sự được trang bị <a class="jump" href="#tu-duy">4 bộ tư duy nền tảng</a> khi làm việc cùng AI: AI First, Hệ thống, Phản biện, Linh hoạt.</p></div></div>
       <div class="card"><div class="big">2<small>công cụ</small></div><div><h3>Thành thạo Claude Pro và Gemini</h3><p>Sử dụng thành thạo hai công cụ AI chính trong công việc hằng ngày.</p></div></div>
-      <div class="card"><div class="big">8<small>SOP có AI</small></div><div><h3>Quy trình có nhúng AI đang vận hành</h3><p>Khóa K1 và K2 đã có 8 quy trình làm việc nhúng AI, được sử dụng hằng ngày.</p></div></div>
+      <div class="card"><div class="big"><span class="sop-n">8</span><span style="font-size:calc(2 * var(--u));color:var(--orange)">+</span><small>SOP có AI</small></div><div><h3>Quy trình có nhúng AI đang vận hành</h3><p>Từ <span class="sop-n">8</span> SOP đầu tiên của khóa K1, K2, số quy trình nhúng AI tiếp tục tăng ở cả khối nhà máy và văn phòng.</p></div></div>
       <div class="card" style="background:var(--navy);border-color:var(--navy)"><div class="big" style="color:#fff">100<span style="font-size:calc(2 * var(--u));color:var(--orange)">%</span><small style="color:var(--orange)">đạt yêu cầu</small></div><div><h3 style="color:#fff">Nhân sự đạt chuẩn năng lực</h3><p style="color:#C7D2E1">Thi cuối mỗi tháng, phiếu điểm cá nhân; chưa đạt 7/10 làm lại đến khi đạt.</p></div></div>
     </div>
   </div>
@@ -731,6 +814,14 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
 </div>
 </div>
 
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Xem tài liệu">
+  <div class="vw-bar"><span class="t" id="vwTitle"></span>
+    <button id="vwPrev" aria-label="Trang trước">‹</button><span id="vwPage" style="min-width:48px;text-align:center"></span><button id="vwNext" aria-label="Trang sau">›</button>
+    <button id="vwZoom" aria-label="Phóng to hoặc thu nhỏ">⤢ Phóng to</button><button id="vwClose" aria-label="Đóng">×</button></div>
+  <div class="vw-scroll" id="vwScroll"><img id="vwImg" alt=""></div>
+  <div class="vw-note">Dữ liệu minh họa đã ẩn danh</div>
+</div>
+
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Xem video">
   <div class="lb-title" id="lbTitle"></div>
   <button class="lb-close" id="lbClose" aria-label="Đóng video">×</button>
@@ -742,6 +833,9 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
 <div class="nav" id="nav"><button id="prev" aria-label="Slide trước" title="Slide trước (←)">‹</button><button id="next" aria-label="Slide sau" title="Slide sau (→)">›</button><button id="fs" aria-label="Toàn màn hình" title="Toàn màn hình (F)">⛶</button></div>
 
 <script>
+/* SỐ SOP CÓ AI: chỉ sửa ở đây khi có số mới (Thầy Long duyệt) */
+var SOP_COUNT = 8;
+document.querySelectorAll('.sop-n').forEach(function (e) { e.textContent = SOP_COUNT; });
 (function () {
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var total = slides.length, cur = 0;
@@ -826,7 +920,34 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
   document.getElementById('lbClose').onclick = function (e) { e.stopPropagation(); closeVideo(); };
   lb.addEventListener('click', function (e) { e.stopPropagation(); if (e.target === lb) closeVideo(); });
 
+
+  /* Hộp xem tài liệu minh họa */
+  var DOCS = {
+    phieu: { title: 'Minh họa: Phiếu đánh giá cá nhân', pages: ['assets/demo/demo-phieu-ca-nhan.webp'] },
+    baocao: { title: 'Minh họa: Báo cáo tổng hợp cả lớp', pages: ['assets/demo/demo-bao-cao-lop-1.webp', 'assets/demo/demo-bao-cao-lop-2.webp', 'assets/demo/demo-bao-cao-lop-3.webp'] }
+  };
+  var vw = document.getElementById('viewer'), vwImg = document.getElementById('vwImg'), vwScroll = document.getElementById('vwScroll');
+  var vDoc = null, vPage = 0;
+  function vShow() {
+    var d = DOCS[vDoc]; vwImg.src = d.pages[vPage]; vwImg.alt = d.title + ', trang ' + (vPage + 1);
+    document.getElementById('vwTitle').textContent = d.title;
+    document.getElementById('vwPage').textContent = (vPage + 1) + ' / ' + d.pages.length;
+    document.getElementById('vwPrev').disabled = vPage === 0;
+    document.getElementById('vwNext').disabled = vPage === d.pages.length - 1;
+    vwScroll.scrollTop = 0;
+  }
+  function vOpen(doc, page) { vDoc = doc; vPage = page; vwScroll.classList.remove('zoomed'); document.getElementById('vwZoom').textContent = '⤢ Phóng to'; vShow(); vw.classList.add('open'); }
+  function vClose() { vw.classList.remove('open'); vwImg.removeAttribute('src'); }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-doc]'), function (b) {
+    b.addEventListener('click', function (e) { e.stopPropagation(); vOpen(b.getAttribute('data-doc'), parseInt(b.getAttribute('data-page'), 10) || 0); });
+  });
+  document.getElementById('vwPrev').onclick = function (e) { e.stopPropagation(); if (vPage > 0) { vPage--; vShow(); } };
+  document.getElementById('vwNext').onclick = function (e) { e.stopPropagation(); if (vPage < DOCS[vDoc].pages.length - 1) { vPage++; vShow(); } };
+  document.getElementById('vwZoom').onclick = function (e) { e.stopPropagation(); var z = vwScroll.classList.toggle('zoomed'); this.textContent = z ? '⤡ Vừa màn hình' : '⤢ Phóng to'; };
+  document.getElementById('vwClose').onclick = function (e) { e.stopPropagation(); vClose(); };
+  vw.addEventListener('click', function (e) { e.stopPropagation(); if (e.target === vwScroll) vClose(); });
   document.addEventListener('keydown', function (e) {
+    if (vw.classList.contains('open')) { if (e.key === 'Escape') vClose(); else if (e.key === 'ArrowRight') document.getElementById('vwNext').click(); else if (e.key === 'ArrowLeft') document.getElementById('vwPrev').click(); return; }
     if (lb.classList.contains('open')) { if (e.key === 'Escape') closeVideo(); return; }
     if (mobile.matches) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(cur + 1); }
@@ -843,7 +964,7 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
   var tx = null;
   document.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
   document.addEventListener('touchend', function (e) {
-    if (tx === null || mobile.matches || lb.classList.contains('open')) { tx = null; return; }
+    if (tx === null || mobile.matches || lb.classList.contains('open') || vw.classList.contains('open')) { tx = null; return; }
     var dx = e.changedTouches[0].clientX - tx;
     if (Math.abs(dx) > 40) show(dx < 0 ? cur + 1 : cur - 1); tx = null;
   });
