@@ -28,6 +28,7 @@
   --rule: #DCE4EE;
   --font: "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
   color-scheme: light;
+  --u: 1cqw;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; }
@@ -46,23 +47,23 @@ body { background: #0A1424; font-family: var(--font); color: var(--ink); overflo
   background: var(--bg);
   display: none;
   flex-direction: column;
-  padding: 4cqw 5cqw 4.6cqw;
+  padding: calc(4 * var(--u)) calc(5 * var(--u)) calc(4.6 * var(--u));
   overflow: hidden;
-  font-size: 1.25cqw;
+  font-size: calc(1.25 * var(--u));
   line-height: 1.5;
 }
 .slide.active { display: flex; }
 
 /* Đầu và chân slide */
-.kicker { display: flex; align-items: center; gap: 0.9cqw; font-size: 0.95cqw; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-ink); }
-.kicker .num { display: inline-grid; place-items: center; min-width: 2.2cqw; height: 2.2cqw; padding: 0 0.5cqw; border-radius: 0.4cqw; background: var(--navy); color: #fff; letter-spacing: 0; }
-h2 { margin: 1cqw 0 0; font-size: 2.9cqw; line-height: 1.18; font-weight: 800; letter-spacing: -0.01em; color: var(--navy); max-width: 75cqw; text-wrap: balance; }
-.lead { margin: 1.1cqw 0 0; font-size: 1.4cqw; color: var(--ink-2); max-width: 72cqw; text-wrap: pretty; }
-.body { flex: 1; min-height: 0; margin-top: 2.4cqw; display: flex; flex-direction: column; }
-.foot { position: absolute; left: 5cqw; right: 5cqw; bottom: 1.6cqw; display: flex; align-items: center; justify-content: space-between; font-size: 0.85cqw; color: var(--ink-3); }
-.foot .brand { display: flex; align-items: center; gap: 0.8cqw; }
-.foot img { height: 1.5cqw; width: auto; display: block; }
-.band4 { display: flex; height: 0.55cqw; position: absolute; left: 0; right: 0; bottom: 0; }
+.kicker { display: flex; align-items: center; gap: calc(0.9 * var(--u)); font-size: calc(0.95 * var(--u)); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-ink); }
+.kicker .num { display: inline-grid; place-items: center; min-width: calc(2.2 * var(--u)); height: calc(2.2 * var(--u)); padding: 0 calc(0.5 * var(--u)); border-radius: calc(0.4 * var(--u)); background: var(--navy); color: #fff; letter-spacing: 0; }
+h2 { margin: calc(1 * var(--u)) 0 0; font-size: calc(2.9 * var(--u)); line-height: 1.18; font-weight: 800; letter-spacing: -0.01em; color: var(--navy); max-width: calc(75 * var(--u)); text-wrap: balance; }
+.lead { margin: calc(1.1 * var(--u)) 0 0; font-size: calc(1.4 * var(--u)); color: var(--ink-2); max-width: calc(72 * var(--u)); text-wrap: pretty; }
+.body { flex: 1; min-height: 0; margin-top: calc(2.4 * var(--u)); display: flex; flex-direction: column; }
+.foot { position: absolute; left: calc(5 * var(--u)); right: calc(5 * var(--u)); bottom: calc(1.6 * var(--u)); display: flex; align-items: center; justify-content: space-between; font-size: calc(0.85 * var(--u)); color: var(--ink-3); }
+.foot .brand { display: flex; align-items: center; gap: calc(0.8 * var(--u)); }
+.foot img { height: calc(1.5 * var(--u)); width: auto; display: block; }
+.band4 { display: flex; height: calc(0.55 * var(--u)); position: absolute; left: 0; right: 0; bottom: 0; }
 .band4 i { display: block; }
 .band4 .b1 { flex: 46; background: var(--navy); }
 .band4 .b2 { flex: 18; background: var(--cyan); }
@@ -70,64 +71,64 @@ h2 { margin: 1cqw 0 0; font-size: 2.9cqw; line-height: 1.18; font-weight: 800; l
 .band4 .b4 { flex: 18; background: var(--orange); }
 
 /* Thành phần dùng chung */
-.grid { display: grid; gap: 1.6cqw; }
+.grid { display: grid; gap: calc(1.6 * var(--u)); }
 .g2 { grid-template-columns: repeat(2, 1fr); }
 .g3 { grid-template-columns: repeat(3, 1fr); }
 .g4 { grid-template-columns: repeat(4, 1fr); }
-.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; padding: 1.7cqw 1.8cqw; }
-.card h3 { margin: 0 0 0.6cqw; font-size: 1.45cqw; line-height: 1.3; color: var(--navy); font-weight: 700; }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: calc(0.9 * var(--u)); padding: calc(1.7 * var(--u)) calc(1.8 * var(--u)); }
+.card h3 { margin: 0 0 calc(0.6 * var(--u)); font-size: calc(1.45 * var(--u)); line-height: 1.3; color: var(--navy); font-weight: 700; }
 .card p { margin: 0; color: var(--ink-2); }
-.tag { display: inline-block; font-size: 0.85cqw; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3cqw 0.8cqw; border-radius: 99px; }
+.tag { display: inline-block; font-size: calc(0.85 * var(--u)); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: calc(0.3 * var(--u)) calc(0.8 * var(--u)); border-radius: 99px; }
 .t-orange { background: rgba(255,107,26,0.12); color: var(--orange-ink); }
 .t-green { background: rgba(0,214,143,0.14); color: var(--green-ink); }
 .t-cyan { background: rgba(0,194,255,0.14); color: var(--cyan-ink); }
 .t-navy { background: rgba(11,31,58,0.08); color: var(--navy); }
-.accent-top { border-top: 0.35cqw solid var(--orange); }
-.idx { font-size: 2.6cqw; font-weight: 800; color: var(--orange); line-height: 1; margin-bottom: 0.9cqw; }
-.callout { margin-top: auto; background: var(--navy); color: #fff; border-radius: 0.9cqw; padding: 1.4cqw 2cqw; font-size: 1.35cqw; display: flex; gap: 1.2cqw; align-items: center; }
+.accent-top { border-top: calc(0.35 * var(--u)) solid var(--orange); }
+.idx { font-size: calc(2.6 * var(--u)); font-weight: 800; color: var(--orange); line-height: 1; margin-bottom: calc(0.9 * var(--u)); }
+.callout { margin-top: auto; background: var(--navy); color: #fff; border-radius: calc(0.9 * var(--u)); padding: calc(1.4 * var(--u)) calc(2 * var(--u)); font-size: calc(1.35 * var(--u)); display: flex; gap: calc(1.2 * var(--u)); align-items: center; }
 .callout b { color: var(--orange); }
-.callout .bar { width: 0.35cqw; align-self: stretch; background: var(--orange); border-radius: 2px; }
+.callout .bar { width: calc(0.35 * var(--u)); align-self: stretch; background: var(--orange); border-radius: 2px; }
 
 /* Slide bìa */
-.cover { background: var(--navy); color: #fff; padding: 4.6cqw 6cqw 4cqw; }
-.cover .glow { position: absolute; right: -14cqw; top: -18cqw; width: 62cqw; height: 62cqw; border-radius: 50%; background: radial-gradient(circle, rgba(0,194,255,0.20) 0%, rgba(0,194,255,0) 62%); pointer-events: none; }
-.cover .dial { position: absolute; right: 6cqw; top: 50%; transform: translateY(-50%); width: 25cqw; opacity: 0.9; }
-.cover .logo { height: 4.2cqw; width: auto; display: block; align-self: flex-start; }
-.cover .eyebrow { margin-top: auto; font-size: 1.05cqw; font-weight: 700; letter-spacing: 0.16em; color: var(--orange); text-transform: uppercase; }
-.cover h1 { margin: 1.4cqw 0 0; font-size: 4.3cqw; line-height: 1.12; font-weight: 800; letter-spacing: -0.01em; max-width: 58cqw; }
-.cover .sub { margin: 1.8cqw 0 0; font-size: 1.6cqw; color: #C7D2E1; max-width: 54cqw; line-height: 1.45; }
-.cover .meta { margin-top: auto; display: flex; gap: 3cqw; font-size: 1.05cqw; color: #B9C6D8; border-top: 1px solid rgba(255,255,255,0.16); padding-top: 1.6cqw; }
-.cover .meta strong { display: block; color: #fff; font-size: 1.2cqw; font-weight: 600; margin-top: 0.2cqw; }
+.cover { background: var(--navy); color: #fff; padding: calc(4.6 * var(--u)) calc(6 * var(--u)) calc(4 * var(--u)); }
+.cover .glow { position: absolute; right: calc(-14 * var(--u)); top: calc(-18 * var(--u)); width: calc(62 * var(--u)); height: calc(62 * var(--u)); border-radius: 50%; background: radial-gradient(circle, rgba(0,194,255,0.20) 0%, rgba(0,194,255,0) 62%); pointer-events: none; }
+.cover .dial { position: absolute; right: calc(6 * var(--u)); top: 50%; transform: translateY(-50%); width: calc(25 * var(--u)); opacity: 0.9; }
+.cover .logo { height: calc(4.2 * var(--u)); width: auto; display: block; align-self: flex-start; }
+.cover .eyebrow { margin-top: auto; font-size: calc(1.05 * var(--u)); font-weight: 700; letter-spacing: 0.16em; color: var(--orange); text-transform: uppercase; }
+.cover h1 { margin: calc(1.4 * var(--u)) 0 0; font-size: calc(4.3 * var(--u)); line-height: 1.12; font-weight: 800; letter-spacing: -0.01em; max-width: calc(58 * var(--u)); }
+.cover .sub { margin: calc(1.8 * var(--u)) 0 0; font-size: calc(1.6 * var(--u)); color: #C7D2E1; max-width: calc(54 * var(--u)); line-height: 1.45; }
+.cover .meta { margin-top: auto; display: flex; gap: calc(3 * var(--u)); font-size: calc(1.05 * var(--u)); color: #B9C6D8; border-top: 1px solid rgba(255,255,255,0.16); padding-top: calc(1.6 * var(--u)); }
+.cover .meta strong { display: block; color: #fff; font-size: calc(1.2 * var(--u)); font-weight: 600; margin-top: calc(0.2 * var(--u)); }
 
 /* Tóm tắt: ô số liệu */
-.kpi { background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; padding: 1.8cqw 1.8cqw 1.6cqw; display: flex; flex-direction: column; gap: 0.5cqw; }
-.kpi .v { font-size: 4.6cqw; font-weight: 800; line-height: 1; color: var(--navy); letter-spacing: -0.02em; }
-.kpi .v small { font-size: 2cqw; font-weight: 700; color: var(--orange); margin-left: 0.2cqw; }
-.kpi .l { font-size: 1.25cqw; font-weight: 600; color: var(--navy); line-height: 1.35; }
-.kpi .d { font-size: 1.05cqw; color: var(--ink-3); }
-.kpi.k1 { border-top: 0.35cqw solid var(--navy); }
-.kpi.k2 { border-top: 0.35cqw solid var(--cyan); }
-.kpi.k3 { border-top: 0.35cqw solid var(--green); }
-.kpi.k4 { border-top: 0.35cqw solid var(--orange); }
+.kpi { background: var(--surface); border: 1px solid var(--rule); border-radius: calc(0.9 * var(--u)); padding: calc(1.8 * var(--u)) calc(1.8 * var(--u)) calc(1.6 * var(--u)); display: flex; flex-direction: column; gap: calc(0.5 * var(--u)); }
+.kpi .v { font-size: calc(4.6 * var(--u)); font-weight: 800; line-height: 1; color: var(--navy); letter-spacing: -0.02em; }
+.kpi .v small { font-size: calc(2 * var(--u)); font-weight: 700; color: var(--orange); margin-left: calc(0.2 * var(--u)); }
+.kpi .l { font-size: calc(1.25 * var(--u)); font-weight: 600; color: var(--navy); line-height: 1.35; }
+.kpi .d { font-size: calc(1.05 * var(--u)); color: var(--ink-3); }
+.kpi.k1 { border-top: calc(0.35 * var(--u)) solid var(--navy); }
+.kpi.k2 { border-top: calc(0.35 * var(--u)) solid var(--cyan); }
+.kpi.k3 { border-top: calc(0.35 * var(--u)) solid var(--green); }
+.kpi.k4 { border-top: calc(0.35 * var(--u)) solid var(--orange); }
 
 /* Bảng so sánh */
-table.cmp { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 1.15cqw; background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; overflow: hidden; }
-table.cmp th, table.cmp td { padding: 0.95cqw 1.5cqw; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+table.cmp { width: 100%; border-collapse: separate; border-spacing: 0; font-size: calc(1.15 * var(--u)); background: var(--surface); border: 1px solid var(--rule); border-radius: calc(0.9 * var(--u)); overflow: hidden; }
+table.cmp th, table.cmp td { padding: calc(0.95 * var(--u)) calc(1.5 * var(--u)); text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
 table.cmp tr:last-child td { border-bottom: 0; }
-table.cmp thead th { font-size: 1.05cqw; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
+table.cmp thead th { font-size: calc(1.05 * var(--u)); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
 table.cmp thead th:nth-child(1) { background: var(--bg); color: var(--ink-3); width: 20%; }
 table.cmp thead th:nth-child(2) { background: #E9EEF5; color: var(--ink-2); width: 36%; }
 table.cmp thead th:nth-child(3) { background: var(--navy); color: #fff; }
 table.cmp td:nth-child(1) { font-weight: 700; color: var(--navy); background: var(--bg); }
 table.cmp td:nth-child(2) { color: var(--ink-3); }
-table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rgba(255,107,26,0.06); border-left: 0.3cqw solid var(--orange); }
+table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rgba(255,107,26,0.06); border-left: calc(0.3 * var(--u)) solid var(--orange); }
 
 /* Lợi ích */
-.metric { display: flex; flex-direction: column; gap: 0.6cqw; }
-.metric .arrow { font-size: 2.4cqw; font-weight: 800; line-height: 1; }
+.metric { display: flex; flex-direction: column; gap: calc(0.6 * var(--u)); }
+.metric .arrow { font-size: calc(2.4 * var(--u)); font-weight: 800; line-height: 1; }
 .up { color: var(--green-ink); }
 .down { color: var(--orange-ink); }
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6cqw; margin-top: 1.6cqw; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: calc(1.6 * var(--u)); margin-top: calc(1.6 * var(--u)); }
 .wide { background: var(--navy); color: #fff; border: 0; }
 .wide h3 { color: #fff; }
 .wide p { color: #C7D2E1; }
@@ -135,71 +136,71 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 /* Lộ trình 3 khóa */
 .track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
-.phase { position: relative; padding: 0 1.6cqw 0 0; }
-.phase .dot { width: 2.6cqw; height: 2.6cqw; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 1.05cqw; color: #fff; position: relative; z-index: 1; }
-.phase .line { position: absolute; top: 1.3cqw; left: 2.6cqw; right: 0; height: 0.25cqw; background: var(--rule); }
+.phase { position: relative; padding: 0 calc(1.6 * var(--u)) 0 0; }
+.phase .dot { width: calc(2.6 * var(--u)); height: calc(2.6 * var(--u)); border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: calc(1.05 * var(--u)); color: #fff; position: relative; z-index: 1; }
+.phase .line { position: absolute; top: calc(1.3 * var(--u)); left: calc(2.6 * var(--u)); right: 0; height: calc(0.25 * var(--u)); background: var(--rule); }
 .phase:last-child .line { background: linear-gradient(90deg, var(--rule), rgba(220,228,238,0)); }
-.phase .card { margin-top: 1.4cqw; height: calc(100% - 4cqw); display: flex; flex-direction: column; gap: 0.7cqw; }
-.phase .who { font-size: 1.1cqw; color: var(--ink-2); }
-.phase ul { margin: 0.2cqw 0 0; padding-left: 1.3cqw; color: var(--ink-2); font-size: 1.1cqw; }
-.phase ul li { margin: 0.25cqw 0; }
+.phase .card { margin-top: calc(1.4 * var(--u)); height: calc(100% - calc(4 * var(--u))); display: flex; flex-direction: column; gap: calc(0.7 * var(--u)); }
+.phase .who { font-size: calc(1.1 * var(--u)); color: var(--ink-2); }
+.phase ul { margin: calc(0.2 * var(--u)) 0 0; padding-left: calc(1.3 * var(--u)); color: var(--ink-2); font-size: calc(1.1 * var(--u)); }
+.phase ul li { margin: calc(0.25 * var(--u)) 0; }
 .phase .status { margin-top: auto; }
 
 /* 4 trụ cột */
-.pillar { display: flex; flex-direction: column; gap: 0.7cqw; }
-.pillar .ic { width: 3.6cqw; height: 3.6cqw; border-radius: 0.8cqw; display: grid; place-items: center; }
-.pillar .ic svg { width: 2.1cqw; height: 2.1cqw; }
-.pillar ul { margin: 0.4cqw 0 0; padding-left: 1.2cqw; color: var(--ink-2); font-size: 1.1cqw; }
-.pillar ul li { margin: 0.25cqw 0; }
+.pillar { display: flex; flex-direction: column; gap: calc(0.7 * var(--u)); }
+.pillar .ic { width: calc(3.6 * var(--u)); height: calc(3.6 * var(--u)); border-radius: calc(0.8 * var(--u)); display: grid; place-items: center; }
+.pillar .ic svg { width: calc(2.1 * var(--u)); height: calc(2.1 * var(--u)); }
+.pillar ul { margin: calc(0.4 * var(--u)) 0 0; padding-left: calc(1.2 * var(--u)); color: var(--ink-2); font-size: calc(1.1 * var(--u)); }
+.pillar ul li { margin: calc(0.25 * var(--u)) 0; }
 
 /* Chu trình đánh giá */
-.cycle { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.8cqw; }
-.step { background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; padding: 1.4cqw 1.2cqw; position: relative; display: flex; flex-direction: column; gap: 0.5cqw; }
-.step .n { font-size: 0.9cqw; font-weight: 700; letter-spacing: 0.1em; color: var(--ink-3); }
-.step h4 { margin: 0; font-size: 1.2cqw; line-height: 1.3; color: var(--navy); }
-.step p { margin: 0; font-size: 1.02cqw; color: var(--ink-2); line-height: 1.45; }
+.cycle { display: grid; grid-template-columns: repeat(6, 1fr); gap: calc(0.8 * var(--u)); }
+.step { background: var(--surface); border: 1px solid var(--rule); border-radius: calc(0.9 * var(--u)); padding: calc(1.4 * var(--u)) calc(1.2 * var(--u)); position: relative; display: flex; flex-direction: column; gap: calc(0.5 * var(--u)); }
+.step .n { font-size: calc(0.9 * var(--u)); font-weight: 700; letter-spacing: 0.1em; color: var(--ink-3); }
+.step h4 { margin: 0; font-size: calc(1.2 * var(--u)); line-height: 1.3; color: var(--navy); }
+.step p { margin: 0; font-size: calc(1.02 * var(--u)); color: var(--ink-2); line-height: 1.45; }
 .step.hl { background: var(--navy); border-color: var(--navy); }
 .step.hl h4 { color: #fff; }
 .step.hl p { color: #C7D2E1; }
 .step.hl .n { color: var(--orange); }
-.step:not(:last-child)::after { content: ""; position: absolute; right: -0.75cqw; top: 50%; width: 0.7cqw; height: 0.7cqw; border-top: 0.2cqw solid var(--orange); border-right: 0.2cqw solid var(--orange); transform: translateY(-50%) rotate(45deg); background: transparent; z-index: 2; }
-.loop { margin-top: 1.4cqw; display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.6cqw; }
-.scale { display: flex; gap: 0.6cqw; margin-top: 0.8cqw; flex-wrap: wrap; }
-.scale span { font-size: 1cqw; font-weight: 600; padding: 0.45cqw 0.9cqw; border-radius: 0.5cqw; }
+.step:not(:last-child)::after { content: ""; position: absolute; right: calc(-0.75 * var(--u)); top: 50%; width: calc(0.7 * var(--u)); height: calc(0.7 * var(--u)); border-top: calc(0.2 * var(--u)) solid var(--orange); border-right: calc(0.2 * var(--u)) solid var(--orange); transform: translateY(-50%) rotate(45deg); background: transparent; z-index: 2; }
+.loop { margin-top: calc(1.4 * var(--u)); display: grid; grid-template-columns: 1.3fr 1fr; gap: calc(1.6 * var(--u)); }
+.scale { display: flex; gap: calc(0.6 * var(--u)); margin-top: calc(0.8 * var(--u)); flex-wrap: wrap; }
+.scale span { font-size: calc(1 * var(--u)); font-weight: 600; padding: calc(0.45 * var(--u)) calc(0.9 * var(--u)); border-radius: calc(0.5 * var(--u)); }
 
 /* Đội ngũ */
-.team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; }
-.role { background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; padding: 2cqw; display: flex; flex-direction: column; gap: 0.8cqw; }
-.role .count { font-size: 5.2cqw; font-weight: 800; line-height: 1; color: var(--navy); }
-.role h3 { margin: 0; font-size: 1.55cqw; color: var(--navy); }
-.role ul { margin: 0; padding-left: 1.2cqw; color: var(--ink-2); font-size: 1.12cqw; }
-.role ul li { margin: 0.3cqw 0; }
+.team { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(1.6 * var(--u)); }
+.role { background: var(--surface); border: 1px solid var(--rule); border-radius: calc(0.9 * var(--u)); padding: calc(2 * var(--u)); display: flex; flex-direction: column; gap: calc(0.8 * var(--u)); }
+.role .count { font-size: calc(5.2 * var(--u)); font-weight: 800; line-height: 1; color: var(--navy); }
+.role h3 { margin: 0; font-size: calc(1.55 * var(--u)); color: var(--navy); }
+.role ul { margin: 0; padding-left: calc(1.2 * var(--u)); color: var(--ink-2); font-size: calc(1.12 * var(--u)); }
+.role ul li { margin: calc(0.3 * var(--u)) 0; }
 
 /* Kết quả */
-.res { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4cqw; }
-.res .card { display: grid; grid-template-columns: 9cqw 1fr; gap: 1.6cqw; align-items: center; padding: 1.6cqw 1.8cqw; }
-.res .big { font-size: 4.4cqw; font-weight: 800; color: var(--navy); line-height: 1; text-align: center; letter-spacing: -0.02em; }
-.res .big small { display: block; font-size: 0.95cqw; font-weight: 700; color: var(--orange-ink); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.5cqw; }
-.res h3 { font-size: 1.4cqw; }
+.res { display: grid; grid-template-columns: repeat(2, 1fr); gap: calc(1.4 * var(--u)); }
+.res .card { display: grid; grid-template-columns: calc(9 * var(--u)) 1fr; gap: calc(1.6 * var(--u)); align-items: center; padding: calc(1.6 * var(--u)) calc(1.8 * var(--u)); }
+.res .big { font-size: calc(4.4 * var(--u)); font-weight: 800; color: var(--navy); line-height: 1; text-align: center; letter-spacing: -0.02em; }
+.res .big small { display: block; font-size: calc(0.95 * var(--u)); font-weight: 700; color: var(--orange-ink); letter-spacing: 0.08em; text-transform: uppercase; margin-top: calc(0.5 * var(--u)); }
+.res h3 { font-size: calc(1.4 * var(--u)); }
 
 /* Cam kết */
-.commit { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.8cqw; flex: 1; min-height: 0; }
-.four { display: grid; grid-template-columns: 1fr 1fr; gap: 1cqw; margin-top: 1cqw; }
-.four div { background: var(--bg); border-radius: 0.7cqw; padding: 1cqw 1.2cqw; font-weight: 600; color: var(--navy); font-size: 1.2cqw; border-left: 0.3cqw solid var(--cyan); }
-.chain { display: flex; flex-direction: column; gap: 1cqw; }
-.chain .lvl { display: flex; align-items: center; gap: 1.2cqw; background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; padding: 1.2cqw 1.6cqw; }
-.chain .lvl b { font-size: 1.3cqw; color: var(--navy); display: block; }
-.chain .lvl span { font-size: 1.05cqw; color: var(--ink-2); }
-.chain .lvl .badge { flex: none; width: 3.2cqw; height: 3.2cqw; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #fff; font-size: 1.15cqw; }
+.commit { display: grid; grid-template-columns: 1.15fr 1fr; gap: calc(1.8 * var(--u)); flex: 1; min-height: 0; }
+.four { display: grid; grid-template-columns: 1fr 1fr; gap: calc(1 * var(--u)); margin-top: calc(1 * var(--u)); }
+.four div { background: var(--bg); border-radius: calc(0.7 * var(--u)); padding: calc(1 * var(--u)) calc(1.2 * var(--u)); font-weight: 600; color: var(--navy); font-size: calc(1.2 * var(--u)); border-left: calc(0.3 * var(--u)) solid var(--cyan); }
+.chain { display: flex; flex-direction: column; gap: calc(1 * var(--u)); }
+.chain .lvl { display: flex; align-items: center; gap: calc(1.2 * var(--u)); background: var(--surface); border: 1px solid var(--rule); border-radius: calc(0.9 * var(--u)); padding: calc(1.2 * var(--u)) calc(1.6 * var(--u)); }
+.chain .lvl b { font-size: calc(1.3 * var(--u)); color: var(--navy); display: block; }
+.chain .lvl span { font-size: calc(1.05 * var(--u)); color: var(--ink-2); }
+.chain .lvl .badge { flex: none; width: calc(3.2 * var(--u)); height: calc(3.2 * var(--u)); border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #fff; font-size: calc(1.15 * var(--u)); }
 
 /* Slide kết */
-.closing { background: var(--navy); color: #fff; padding: 5cqw 6cqw 4cqw; }
-.closing .logo { height: 4cqw; width: auto; display: block; align-self: flex-start; }
-.closing h2 { color: #fff; font-size: 3.4cqw; max-width: 60cqw; margin-top: auto; }
-.closing .lead { color: #C7D2E1; max-width: 60cqw; }
-.contact { margin-top: auto; display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 3.2cqw; border-top: 1px solid rgba(255,255,255,0.16); padding-top: 1.6cqw; font-size: 1.1cqw; color: #B9C6D8; }
-.contact strong { display: block; color: #fff; font-size: 1.2cqw; font-weight: 600; margin-top: 0.2cqw; }
-.slogan { font-size: 1.15cqw; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-top: 2cqw; }
+.closing { background: var(--navy); color: #fff; padding: calc(5 * var(--u)) calc(6 * var(--u)) calc(4 * var(--u)); }
+.closing .logo { height: calc(4 * var(--u)); width: auto; display: block; align-self: flex-start; }
+.closing h2 { color: #fff; font-size: calc(3.4 * var(--u)); max-width: calc(60 * var(--u)); margin-top: auto; }
+.closing .lead { color: #C7D2E1; max-width: calc(60 * var(--u)); }
+.contact { margin-top: auto; display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: calc(3.2 * var(--u)); border-top: 1px solid rgba(255,255,255,0.16); padding-top: calc(1.6 * var(--u)); font-size: calc(1.1 * var(--u)); color: #B9C6D8; }
+.contact strong { display: block; color: #fff; font-size: calc(1.2 * var(--u)); font-weight: 600; margin-top: calc(0.2 * var(--u)); }
+.slogan { font-size: calc(1.15 * var(--u)); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-top: calc(2 * var(--u)); }
 
 /* Điều khiển */
 .nav { position: fixed; right: 16px; bottom: 14px; display: flex; gap: 6px; align-items: center; z-index: 10; font-family: var(--font); transition: opacity .3s; }
@@ -209,14 +210,121 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 .nav .count { color: #B9C6D8; font-size: 13px; min-width: 52px; text-align: center; }
 .progress { position: fixed; left: 0; top: 0; height: 3px; background: var(--orange); z-index: 10; transition: width .25s; }
 
+
+/* Slide Tư duy AI: 4 ô video */
+.vgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(1.6 * var(--u)); flex: 1; min-height: 0; }
+.vcell { background: var(--surface); border: 1px solid var(--rule); border-radius: calc(0.9 * var(--u)); overflow: hidden; display: flex; flex-direction: column; }
+.vthumb { position: relative; flex: 1; min-height: calc(9 * var(--u)); border: 0; padding: 0; cursor: pointer; display: grid; place-items: center; color: #fff; font-family: var(--font); background: var(--navy); overflow: hidden; }
+.vthumb::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 80% 15%, var(--glow, rgba(0,194,255,0.35)) 0%, rgba(0,0,0,0) 60%); }
+.vthumb .vnum { position: absolute; left: calc(1.4 * var(--u)); top: calc(1.1 * var(--u)); font-size: calc(0.9 * var(--u)); font-weight: 700; letter-spacing: 0.12em; color: #B9C6D8; }
+.vthumb .vname { position: absolute; left: calc(1.4 * var(--u)); right: calc(1.4 * var(--u)); bottom: calc(1.2 * var(--u)); font-size: calc(1.7 * var(--u)); font-weight: 800; line-height: 1.2; text-align: left; }
+.vthumb .play { position: relative; width: calc(4.4 * var(--u)); height: calc(4.4 * var(--u)); border-radius: 50%; background: var(--orange); display: grid; place-items: center; box-shadow: 0 0 0 calc(0.6 * var(--u)) rgba(255,107,26,0.25); transition: transform .15s; }
+.vthumb .play svg { width: 40%; height: 40%; margin-left: 8%; }
+.vthumb:hover .play, .vthumb:focus-visible .play { transform: scale(1.08); }
+.vbody { padding: calc(1.3 * var(--u)) calc(1.4 * var(--u)) calc(1.4 * var(--u)); display: flex; flex-direction: column; gap: calc(0.9 * var(--u)); }
+.vbody p { margin: 0; color: var(--ink-2); font-size: calc(1.1 * var(--u)); line-height: 1.45; }
+.vbtn { align-self: flex-start; display: inline-flex; align-items: center; gap: calc(0.5 * var(--u)); border: 0; cursor: pointer; font-family: var(--font); font-weight: 700; font-size: calc(1 * var(--u)); padding: calc(0.55 * var(--u)) calc(1.1 * var(--u)); border-radius: 99px; background: var(--navy); color: #fff; }
+.vbtn:hover { background: var(--orange); }
+.vnote { margin-top: calc(1.2 * var(--u)); font-size: calc(0.95 * var(--u)); color: var(--ink-3); }
+a.jump { color: var(--orange-ink); font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(201,74,6,0.35); }
+a.jump:hover { border-bottom-color: var(--orange-ink); }
+
+/* Hộp xem video (chỉ tải YouTube khi người xem bấm) */
+.lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(5,12,24,0.88); display: none; align-items: center; justify-content: center; padding: 56px 16px 24px; }
+.lightbox.open { display: flex; }
+.lb-frame { position: relative; height: min(82vh, 760px); aspect-ratio: 9 / 16; max-width: 92vw; background: #000; border-radius: 12px; overflow: hidden; }
+.lb-frame iframe, .lb-frame #lbPlayer { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.lb-title { position: absolute; top: 14px; left: 16px; right: 70px; color: #fff; font-family: var(--font); font-weight: 700; font-size: 16px; }
+.lb-close { position: absolute; top: 10px; right: 14px; width: 40px; height: 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(11,31,58,0.8); color: #fff; font-size: 22px; cursor: pointer; }
+.lb-close:hover { background: var(--orange); border-color: var(--orange); }
+.lb-msg { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; text-align: center; color: #fff; font-family: var(--font); background: var(--navy); }
+.lb-msg.show { display: flex; }
+.lb-msg b { font-size: 17px; }
+.lb-msg span { color: #C7D2E1; font-size: 14px; line-height: 1.5; }
+.lb-msg a { color: #fff; background: var(--orange); padding: 10px 18px; border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 14px; }
+.lb-wait { position: absolute; inset: 0; display: grid; place-items: center; color: #B9C6D8; font-family: var(--font); font-size: 14px; }
+
+/* Điện thoại (màn hình hẹp): đọc dạng cuộn dọc, chữ to, lưới xếp một cột */
+@media (max-width: 760px) {
+  :root { --u: 0.96vw; }
+  html, body { height: auto; overflow: auto; }
+  body { background: var(--bg); }
+  .stage { position: static; display: block; }
+  .deck { width: 100%; aspect-ratio: auto; container-type: normal; }
+  .slide { position: relative; display: flex !important; padding: calc(9 * var(--u)) calc(5 * var(--u)) calc(7 * var(--u)); border-bottom: 6px solid #E3E9F1; }
+  .slide.cover, .slide.closing { min-height: 92vh; }
+  .kicker { font-size: calc(2.9 * var(--u)); gap: calc(2 * var(--u)); }
+  .kicker .num { min-width: calc(6 * var(--u)); height: calc(6 * var(--u)); }
+  h2 { font-size: calc(7.4 * var(--u)); max-width: none; margin-top: calc(2.5 * var(--u)); }
+  .lead { font-size: calc(4.1 * var(--u)); max-width: none; margin-top: calc(3 * var(--u)); }
+  .slide { font-size: calc(4 * var(--u)); }
+  .body { margin-top: calc(5 * var(--u)) !important; }
+  .grid.g4, .grid.g3, .grid.g2, .team, .track, .res, .split, .loop, .commit, .vgrid { grid-template-columns: 1fr !important; gap: calc(4 * var(--u)); }
+  .grid.g4:has(.kpi) { grid-template-columns: 1fr 1fr !important; }
+  .card, .kpi, .role, .step { padding: calc(4.5 * var(--u)) calc(4.5 * var(--u)); border-radius: calc(2.5 * var(--u)); }
+  .card h3, .role h3, .step h4 { font-size: calc(4.6 * var(--u)); }
+  .card p, .role ul, .pillar ul, .phase ul, .phase .who, .step p, .vbody p, .chain .lvl span { font-size: calc(3.9 * var(--u)); }
+  .tag { font-size: calc(2.7 * var(--u)); padding: calc(0.9 * var(--u)) calc(2.4 * var(--u)); }
+  .idx { font-size: calc(7 * var(--u)); }
+  .kpi .v { font-size: calc(11 * var(--u)); } .kpi .v small { font-size: calc(5 * var(--u)); }
+  .kpi .l { font-size: calc(4 * var(--u)); } .kpi .d { font-size: calc(3.4 * var(--u)); }
+  .callout { margin-top: calc(5 * var(--u)); font-size: calc(4 * var(--u)); padding: calc(4 * var(--u)) calc(4.5 * var(--u)); border-radius: calc(2.5 * var(--u)); }
+  table.cmp { font-size: calc(3.3 * var(--u)); }
+  table.cmp th, table.cmp td { padding: calc(2.4 * var(--u)) calc(2.4 * var(--u)); }
+  table.cmp thead th { font-size: calc(2.8 * var(--u)); }
+  .metric .arrow { font-size: calc(6 * var(--u)); }
+  .phase { padding: 0; } .phase .line { display: none; } .phase .card { height: auto; margin-top: calc(2.5 * var(--u)); }
+  .phase .dot { width: calc(8 * var(--u)); height: calc(8 * var(--u)); font-size: calc(3.4 * var(--u)); }
+  .pillar .ic { width: calc(10 * var(--u)); height: calc(10 * var(--u)); border-radius: calc(2 * var(--u)); } .pillar .ic svg { width: calc(6 * var(--u)); height: calc(6 * var(--u)); }
+  .cycle { grid-template-columns: 1fr 1fr; gap: calc(3 * var(--u)); }
+  .step::after { display: none; }
+  .step .n { font-size: calc(2.7 * var(--u)); }
+  .scale span { font-size: calc(3.2 * var(--u)); padding: calc(1.2 * var(--u)) calc(2.4 * var(--u)); border-radius: calc(1.5 * var(--u)); }
+  .role .count { font-size: calc(14 * var(--u)); }
+  .res .card { grid-template-columns: calc(24 * var(--u)) 1fr; }
+  .res .big { font-size: calc(11 * var(--u)); } .res .big small { font-size: calc(2.7 * var(--u)); }
+  .res .big span { font-size: calc(5 * var(--u)) !important; }
+  .four div { font-size: calc(3.9 * var(--u)); padding: calc(3 * var(--u)); }
+  .chain .lvl { padding: calc(3.5 * var(--u)); gap: calc(3.5 * var(--u)); } .chain .lvl b { font-size: calc(4.4 * var(--u)); }
+  .chain .lvl .badge { width: calc(9 * var(--u)); height: calc(9 * var(--u)); font-size: calc(3.8 * var(--u)); }
+  .vthumb { min-height: calc(52 * var(--u)); }
+  .vthumb .vnum { font-size: calc(2.8 * var(--u)); left: calc(4 * var(--u)); top: calc(3.5 * var(--u)); }
+  .vthumb .vname { font-size: calc(6 * var(--u)); left: calc(4 * var(--u)); bottom: calc(3.5 * var(--u)); }
+  .vthumb .play { width: calc(14 * var(--u)); height: calc(14 * var(--u)); }
+  .vbody { padding: calc(4 * var(--u)); gap: calc(3 * var(--u)); }
+  .vbtn { font-size: calc(3.6 * var(--u)); padding: calc(2.2 * var(--u)) calc(4.4 * var(--u)); }
+  .vnote { font-size: calc(3.2 * var(--u)); margin-top: calc(4 * var(--u)); }
+  .cover { padding: calc(10 * var(--u)) calc(6 * var(--u)) calc(10 * var(--u)); }
+  .cover .dial { display: none; }
+  .cover .logo, .closing .logo { height: calc(11 * var(--u)); }
+  .cover .eyebrow { font-size: calc(3 * var(--u)); margin-top: calc(18 * var(--u)); }
+  .cover h1 { font-size: calc(9 * var(--u)); max-width: none; margin-top: calc(4 * var(--u)); }
+  .cover .sub { font-size: calc(4.4 * var(--u)); max-width: none; margin-top: calc(5 * var(--u)); }
+  .cover .meta { flex-direction: column; gap: calc(4 * var(--u)); font-size: calc(3.4 * var(--u)); margin-top: calc(12 * var(--u)); padding-top: calc(5 * var(--u)); }
+  .cover .meta strong { font-size: calc(4 * var(--u)); }
+  .closing { padding: calc(10 * var(--u)) calc(6 * var(--u)) calc(12 * var(--u)); }
+  .closing h2 { font-size: calc(8 * var(--u)); margin-top: calc(16 * var(--u)); }
+  .slogan { font-size: calc(3 * var(--u)); margin-top: calc(5 * var(--u)); }
+  .contact { grid-template-columns: 1fr; gap: calc(4 * var(--u)); font-size: calc(3.4 * var(--u)); margin-top: calc(10 * var(--u)); padding-top: calc(5 * var(--u)); }
+  .contact strong { font-size: calc(4 * var(--u)); }
+  .contact br { display: none; }
+  .foot { position: static; margin-top: calc(7 * var(--u)); gap: calc(3 * var(--u)); font-size: calc(2.8 * var(--u)); }
+  .loop .wide h3 { font-size: calc(6 * var(--u)) !important; }
+  .foot .pg { white-space: nowrap; }
+  .foot img { height: calc(4.5 * var(--u)); }
+  .band4 { height: calc(1.6 * var(--u)); }
+  .nav, .progress { display: none; }
+}
+
 /* In ra PDF: mỗi slide một trang ngang */
 @media print {
   @page { size: 1600px 900px; margin: 0; }
+  :root { --u: 16px; }
   html, body { height: auto; overflow: visible; background: #fff; }
   .stage { position: static; display: block; }
   .deck { width: 1600px; height: 900px; aspect-ratio: auto; position: static; container-type: normal; }
   .slide { position: relative; display: flex !important; width: 1600px; height: 900px; page-break-after: always; break-after: page; }
-  .nav, .progress { display: none; }
+  .nav, .progress, .lightbox { display: none !important; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 </style>
@@ -244,7 +352,7 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 <!-- 02 TÓM TẮT -->
 <section class="slide">
-  <div class="kicker"><span class="num">01</span>Tóm tắt điều hành</div>
+  <div class="kicker"><span class="num"></span>Tóm tắt điều hành</div>
   <h2>Coaching AI dài hạn đã đưa AI vào công việc hằng ngày của Công ty N</h2>
   <p class="lead">Từ tháng 6/2026, Học viện ALM đồng hành cùng Công ty N qua ba khóa nối tiếp: khối vận hành nhà máy, đội ngũ quản lý khối văn phòng, rồi toàn bộ nhân sự. Mục tiêu không dừng ở việc biết dùng AI, mà là thay đổi cách làm việc và để lại đội AI Mentor nội bộ.</p>
   <div class="body">
@@ -261,7 +369,7 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 <!-- 03 BÀI TOÁN -->
 <section class="slide">
-  <div class="kicker"><span class="num">02</span>Bài toán của doanh nghiệp</div>
+  <div class="kicker"><span class="num"></span>Bài toán của doanh nghiệp</div>
   <h2>Vì sao một khóa training AI thường chưa đủ với doanh nghiệp sản xuất</h2>
   <p class="lead">Nhiều doanh nghiệp đã cho nhân sự học AI, nhưng sau khóa học quy trình làm việc vẫn gần như không đổi. Khoảng trống nằm ở bước đi từ <em>biết</em> đến <em>làm</em>.</p>
   <div class="body">
@@ -278,9 +386,9 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 <!-- 04 SO SÁNH -->
 <section class="slide">
-  <div class="kicker"><span class="num">03</span>Training và Coaching</div>
+  <div class="kicker"><span class="num"></span>Training và Coaching</div>
   <h2>Training trang bị kiến thức; Coaching tạo ra năng lực vận hành</h2>
-  <div class="body" style="margin-top:2cqw">
+  <div class="body" style="margin-top:calc(2 * var(--u))">
     <table class="cmp">
       <thead><tr><th>Tiêu chí</th><th>Gói Training AI</th><th>Gói Coaching AI</th></tr></thead>
       <tbody>
@@ -299,10 +407,10 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 <!-- 05 LỢI ÍCH -->
 <section class="slide">
-  <div class="kicker"><span class="num">04</span>Lợi ích cho doanh nghiệp</div>
+  <div class="kicker"><span class="num"></span>Lợi ích cho doanh nghiệp</div>
   <h2>Doanh nghiệp nhận được gì khi chọn Coaching thay vì Training</h2>
   <p class="lead">Lợi ích được đo trên chính các quy trình đã nhúng AI, theo bốn chỉ số vận hành, và được giữ lại lâu dài nhờ hai giá trị nền tảng.</p>
-  <div class="body" style="margin-top:2cqw">
+  <div class="body" style="margin-top:calc(2 * var(--u))">
     <div class="grid g4">
       <div class="card metric"><div class="arrow up">▲</div><h3>Tăng năng suất</h3><p>Mỗi nhân sự xử lý được nhiều việc hơn với cùng nguồn lực.</p></div>
       <div class="card metric"><div class="arrow down">▼</div><h3>Giảm thời gian</h3><p>Rút ngắn các bước soạn thảo, tổng hợp, tra cứu, báo cáo.</p></div>
@@ -310,8 +418,8 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
       <div class="card metric"><div class="arrow down">▼</div><h3>Giảm sai sót</h3><p>Quy trình chuẩn hóa có AI kiểm tra, ít phụ thuộc vào trí nhớ cá nhân.</p></div>
     </div>
     <div class="split">
-      <div class="card wide"><span class="tag">Giá trị nền tảng 1</span><h3 style="margin-top:0.8cqw">Tri thức được giữ trong quy trình</h3><p>Cách làm tốt được viết thành SOP có AI, không mất đi khi nhân sự thay đổi.</p></div>
-      <div class="card wide"><span class="tag">Giá trị nền tảng 2</span><h3 style="margin-top:0.8cqw">Đội AI Mentor nội bộ</h3><p>Doanh nghiệp tự đào tạo người mới và tiếp tục cải tiến, hướng tới tổ chức học tập.</p></div>
+      <div class="card wide"><span class="tag">Giá trị nền tảng 1</span><h3 style="margin-top:calc(0.8 * var(--u))">Tri thức được giữ trong quy trình</h3><p>Cách làm tốt được viết thành SOP có AI, không mất đi khi nhân sự thay đổi.</p></div>
+      <div class="card wide"><span class="tag">Giá trị nền tảng 2</span><h3 style="margin-top:calc(0.8 * var(--u))">Đội AI Mentor nội bộ</h3><p>Doanh nghiệp tự đào tạo người mới và tiếp tục cải tiến, hướng tới tổ chức học tập.</p></div>
     </div>
   </div>
   <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
@@ -319,7 +427,7 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 <!-- 06 LỘ TRÌNH 3 KHÓA -->
 <section class="slide">
-  <div class="kicker"><span class="num">05</span>Triển khai tại Công ty N</div>
+  <div class="kicker"><span class="num"></span>Triển khai tại Công ty N</div>
   <h2>Ba khóa coaching, lan tỏa từ nhà máy đến toàn công ty</h2>
   <p class="lead">Bắt đầu từ lõi sản xuất và đội ngũ quản lý, để khi mở rộng ra toàn công ty đã có quy trình mẫu và người dẫn dắt.</p>
   <div class="body">
@@ -361,7 +469,7 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 <!-- 07 NỘI DUNG 4 TRỤ CỘT -->
 <section class="slide">
-  <div class="kicker"><span class="num">06</span>Nội dung coaching</div>
+  <div class="kicker"><span class="num"></span>Nội dung coaching</div>
   <h2>Bốn trụ cột: từ tư duy đến đội ngũ tự vận hành</h2>
   <div class="body">
     <div class="grid g4" style="flex:1">
@@ -370,7 +478,7 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
         <div class="tag t-navy" style="align-self:flex-start">Trụ cột 1</div>
         <h3>Tư duy AI</h3>
         <p>Hiểu đúng AI làm được gì, không làm được gì, và cách giao việc cho AI như giao cho một cộng sự.</p>
-        <ul><li>4 bộ tư duy nền tảng khi dùng AI</li><li>Kiểm chứng kết quả, bảo mật dữ liệu</li></ul>
+        <ul><li><a class="jump" href="#tu-duy">4 bộ tư duy nền tảng</a> khi dùng AI</li><li>Kiểm chứng kết quả, bảo mật dữ liệu</li></ul>
       </div>
       <div class="card pillar accent-top">
         <div class="ic" style="background:rgba(0,194,255,0.14)"><svg viewBox="0 0 24 24" fill="none" stroke="#0079A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div>
@@ -398,12 +506,41 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
   <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
 </section>
 
+<!-- NỘI DUNG 1: TƯ DUY AI (4 video) -->
+<section class="slide" id="tu-duy">
+  <div class="kicker"><span class="num"></span>Nội dung 1 · Tư duy AI</div>
+  <h2>Bốn tư duy nền tảng khi làm việc cùng AI</h2>
+  <p class="lead">Mỗi tư duy là một video ngắn trong bộ học liệu “10 tư duy nền tảng để dùng AI hiệu quả” do IATC biên soạn cho học viên.</p>
+  <div class="body" style="margin-top:calc(2 * var(--u))">
+    <div class="vgrid">
+      <div class="vcell">
+        <button class="vthumb" data-vid="drP3VjLun0c" data-title="Tư duy AI First" style="--glow:rgba(255,107,26,0.40)" aria-label="Xem video Tư duy AI First"><span class="vnum">TƯ DUY 01</span><span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg></span><span class="vname">Tư duy AI First</span></button>
+        <div class="vbody"><p>Gặp một việc mới, trước hết hỏi AI có thể đảm nhận phần nào, rồi mới bắt tay vào làm.</p><button class="vbtn" data-vid="drP3VjLun0c" data-title="Tư duy AI First">▶ Xem video</button></div>
+      </div>
+      <div class="vcell">
+        <button class="vthumb" data-vid="J2rN1fsDU2Q" data-title="Tư duy Hệ thống" style="--glow:rgba(0,194,255,0.40)" aria-label="Xem video Tư duy Hệ thống"><span class="vnum">TƯ DUY 02</span><span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg></span><span class="vname">Tư duy Hệ thống</span></button>
+        <div class="vbody"><p>Nhìn công việc thành một quy trình nhiều bước để đặt AI vào đúng chỗ tạo giá trị nhất.</p><button class="vbtn" data-vid="J2rN1fsDU2Q" data-title="Tư duy Hệ thống">▶ Xem video</button></div>
+      </div>
+      <div class="vcell">
+        <button class="vthumb" data-vid="3-UhtmU1clg" data-title="Tư duy Phản biện" style="--glow:rgba(0,214,143,0.40)" aria-label="Xem video Tư duy Phản biện"><span class="vnum">TƯ DUY 03</span><span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg></span><span class="vname">Tư duy Phản biện</span></button>
+        <div class="vbody"><p>Luôn kiểm chứng kết quả AI đưa ra, đối chiếu số liệu và nguồn trước khi sử dụng.</p><button class="vbtn" data-vid="3-UhtmU1clg" data-title="Tư duy Phản biện">▶ Xem video</button></div>
+      </div>
+      <div class="vcell">
+        <button class="vthumb" data-vid="8NBpExN5ckg" data-title="Tư duy Linh hoạt" style="--glow:rgba(255,107,26,0.40)" aria-label="Xem video Tư duy Linh hoạt"><span class="vnum">TƯ DUY 04</span><span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg></span><span class="vname">Tư duy Linh hoạt</span></button>
+        <div class="vbody"><p>Thử nhiều cách giao việc và nhiều công cụ, điều chỉnh ngay khi kết quả chưa đạt.</p><button class="vbtn" data-vid="8NBpExN5ckg" data-title="Tư duy Linh hoạt">▶ Xem video</button></div>
+      </div>
+    </div>
+    <div class="vnote">Video chỉ tải khi bấm xem, không tự phát. Nếu không xem được trong trang, có nút mở trực tiếp trên YouTube.</div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
 <!-- 08 PHƯƠNG PHÁP & ĐÁNH GIÁ -->
 <section class="slide">
-  <div class="kicker"><span class="num">07</span>Phương pháp và kiểm soát chất lượng</div>
+  <div class="kicker"><span class="num"></span>Phương pháp và kiểm soát chất lượng</div>
   <h2>Chu trình hằng tháng bảo đảm không ai bị bỏ lại phía sau</h2>
   <p class="lead">Phương pháp AI Kaizen: bài học ngắn 10–15 phút, thực hành ngay trên công việc thật, đánh giá định kỳ và kèm cặp đến khi đạt.</p>
-  <div class="body" style="margin-top:2cqw">
+  <div class="body" style="margin-top:calc(2 * var(--u))">
     <div class="cycle">
       <div class="step"><div class="n">BƯỚC 1</div><h4>Học ngắn</h4><p>Bài AI Kaizen 10–15 phút, giao và nộp bài trực tuyến.</p></div>
       <div class="step"><div class="n">BƯỚC 2</div><h4>Thực hành trên việc thật</h4><p>Áp dụng vào nhiệm vụ của chính vị trí công việc.</p></div>
@@ -425,7 +562,7 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
       </div>
       <div class="card wide" style="display:flex;flex-direction:column;justify-content:center">
         <span class="tag" style="align-self:flex-start">Kết quả</span>
-        <h3 style="margin-top:0.8cqw;font-size:2.2cqw">100% nhân sự đạt yêu cầu</h3>
+        <h3 style="margin-top:calc(0.8 * var(--u));font-size:calc(2.2 * var(--u))">100% nhân sự đạt yêu cầu</h3>
         <p>Nhờ cơ chế làm lại bắt buộc, không có học viên nào kết thúc khóa dưới chuẩn.</p>
       </div>
     </div>
@@ -435,20 +572,20 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 <!-- 09 ĐỘI NGŨ -->
 <section class="slide">
-  <div class="kicker"><span class="num">08</span>Đội ngũ triển khai</div>
+  <div class="kicker"><span class="num"></span>Đội ngũ triển khai</div>
   <h2>Sáu người đồng hành cùng doanh nghiệp trong suốt chương trình</h2>
   <p class="lead">Mỗi vai trò có nhiệm vụ riêng, để chuyên gia tập trung vào chất lượng chuyên môn, AI Mentor bám sát học viên và Admin giữ nhịp vận hành.</p>
-  <div class="body" style="margin-top:2cqw">
+  <div class="body" style="margin-top:calc(2 * var(--u))">
     <div class="team" style="flex:1">
       <div class="role accent-top">
         <div class="count">2</div><h3>Chuyên gia chính</h3>
         <ul><li>Thiết kế chương trình theo từng khối</li><li>Giảng dạy và coaching đội ngũ quản lý</li><li>Cùng doanh nghiệp xây dựng và nghiệm thu SOP có AI</li></ul>
       </div>
-      <div class="role" style="border-top:0.35cqw solid var(--cyan)">
+      <div class="role" style="border-top:calc(0.35 * var(--u)) solid var(--cyan)">
         <div class="count">3</div><h3>AI Mentor</h3>
         <ul><li>Kèm cặp học viên theo nhóm</li><li>Hỗ trợ thực hành trên công việc thật</li><li>Chấm bài, nhận xét và theo dõi tiến bộ</li></ul>
       </div>
-      <div class="role" style="border-top:0.35cqw solid var(--green)">
+      <div class="role" style="border-top:calc(0.35 * var(--u)) solid var(--green)">
         <div class="count">1</div><h3>Admin</h3>
         <ul><li>Vận hành lớp, lịch học và nhóm học viên</li><li>Nhắc bài, tổng hợp điểm</li><li>Xuất phiếu điểm cá nhân và báo cáo định kỳ</li></ul>
       </div>
@@ -459,14 +596,14 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 <!-- 10 KẾT QUẢ -->
 <section class="slide">
-  <div class="kicker"><span class="num">09</span>Kết quả đạt được</div>
+  <div class="kicker"><span class="num"></span>Kết quả đạt được</div>
   <h2>Kết quả tại Công ty N: đo được, kiểm chứng được</h2>
   <div class="body">
     <div class="res" style="flex:1">
-      <div class="card"><div class="big">4<small>bộ tư duy</small></div><div><h3>Tư duy nền tảng cho toàn bộ nhân sự</h3><p>Toàn bộ nhân sự được trang bị bốn bộ tư duy nền tảng khi làm việc cùng AI.</p></div></div>
+      <div class="card"><div class="big">4<small>bộ tư duy</small></div><div><h3>Tư duy nền tảng cho toàn bộ nhân sự</h3><p>Toàn bộ nhân sự được trang bị <a class="jump" href="#tu-duy">4 bộ tư duy nền tảng</a> khi làm việc cùng AI: AI First, Hệ thống, Phản biện, Linh hoạt.</p></div></div>
       <div class="card"><div class="big">2<small>công cụ</small></div><div><h3>Thành thạo Claude Pro và Gemini</h3><p>Sử dụng thành thạo hai công cụ AI chính trong công việc hằng ngày.</p></div></div>
       <div class="card"><div class="big">8<small>SOP có AI</small></div><div><h3>Quy trình có nhúng AI đang vận hành</h3><p>Khóa K1 và K2 đã có 8 quy trình làm việc nhúng AI, được sử dụng hằng ngày.</p></div></div>
-      <div class="card" style="background:var(--navy);border-color:var(--navy)"><div class="big" style="color:#fff">100<span style="font-size:2cqw;color:var(--orange)">%</span><small style="color:var(--orange)">đạt yêu cầu</small></div><div><h3 style="color:#fff">Nhân sự đạt chuẩn năng lực</h3><p style="color:#C7D2E1">Thi cuối mỗi tháng, phiếu điểm cá nhân; chưa đạt 7/10 làm lại đến khi đạt.</p></div></div>
+      <div class="card" style="background:var(--navy);border-color:var(--navy)"><div class="big" style="color:#fff">100<span style="font-size:calc(2 * var(--u));color:var(--orange)">%</span><small style="color:var(--orange)">đạt yêu cầu</small></div><div><h3 style="color:#fff">Nhân sự đạt chuẩn năng lực</h3><p style="color:#C7D2E1">Thi cuối mỗi tháng, phiếu điểm cá nhân; chưa đạt 7/10 làm lại đến khi đạt.</p></div></div>
     </div>
   </div>
   <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
@@ -474,16 +611,16 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 <!-- 11 CAM KẾT ĐẦU RA -->
 <section class="slide">
-  <div class="kicker"><span class="num">10</span>Cam kết đầu ra của gói Coaching</div>
+  <div class="kicker"><span class="num"></span>Cam kết đầu ra của gói Coaching</div>
   <h2>Giá trị doanh nghiệp giữ lại sau khi chương trình kết thúc</h2>
   <div class="body">
     <div class="commit">
       <div class="card" style="display:flex;flex-direction:column">
         <span class="tag t-cyan" style="align-self:flex-start">Cho từng học viên</span>
-        <h3 style="margin-top:0.8cqw">Nắm vững bốn yếu tố</h3>
+        <h3 style="margin-top:calc(0.8 * var(--u))">Nắm vững bốn yếu tố</h3>
         <p>Mỗi học viên hoàn thành chương trình với đủ bốn yếu tố để tự ứng dụng AI vào công việc.</p>
         <div class="four"><div>Kiến thức</div><div>Kỹ năng</div><div>Quy trình</div><div>Công cụ AI</div></div>
-        <div class="callout" style="font-size:1.2cqw"><span class="bar"></span><div>Triết lý của Học viện ALM: <b>đào tạo ra người giỏi hơn mình</b>.</div></div>
+        <div class="callout" style="font-size:calc(1.2 * var(--u))"><span class="bar"></span><div>Triết lý của Học viện ALM: <b>đào tạo ra người giỏi hơn mình</b>.</div></div>
       </div>
       <div class="chain">
         <div class="lvl"><div class="badge" style="background:var(--navy)">1</div><div><b>SOP có AI, đo đếm được</b><span>Mỗi khối có quy trình nhúng AI với chỉ số đo được về thời gian, chi phí, sai sót.</span></div></div>
@@ -498,7 +635,7 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 
 <!-- 12 KẾT -->
 <section class="slide closing">
-  <div class="glow" style="position:absolute;right:-14cqw;bottom:-22cqw;width:60cqw;height:60cqw;border-radius:50%;background:radial-gradient(circle, rgba(255,107,26,0.16) 0%, rgba(255,107,26,0) 62%)"></div>
+  <div class="glow" style="position:absolute;right:calc(-14 * var(--u));bottom:calc(-22 * var(--u));width:calc(60 * var(--u));height:calc(60 * var(--u));border-radius:50%;background:radial-gradient(circle, rgba(255,107,26,0.16) 0%, rgba(255,107,26,0) 62%)"></div>
   <img class="logo" src="assets/brand/IATC-logo-nen-toi-600px.png" alt="IATC">
   <h2>Sẵn sàng đồng hành cùng doanh nghiệp sản xuất tiếp theo</h2>
   <p class="lead">Học viện AI Lab Mastery (ALM) và Trung tâm Đào tạo AI Công nghiệp IATC mong được trao đổi thêm về chương trình Coaching AI phù hợp với từng doanh nghiệp.</p>
@@ -515,21 +652,43 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
 </div>
 </div>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Xem video">
+  <div class="lb-title" id="lbTitle"></div>
+  <button class="lb-close" id="lbClose" aria-label="Đóng video">×</button>
+  <div class="lb-frame"><div class="lb-wait" id="lbWait">Đang tải video…</div><div id="lbPlayer"></div>
+    <div class="lb-msg" id="lbMsg"><b>Video này hiện không phát được trong trang.</b><span>Có thể do kết nối mạng hoặc video bị giới hạn phát nhúng.</span><a id="lbOut" href="#" target="_blank" rel="noopener">Mở trên YouTube ↗</a></div>
+  </div>
+</div>
+
 <div class="nav" id="nav"><button id="prev" aria-label="Slide trước" title="Slide trước (←)">‹</button><button id="next" aria-label="Slide sau" title="Slide sau (→)">›</button><button id="fs" aria-label="Toàn màn hình" title="Toàn màn hình (F)">⛶</button></div>
 
 <script>
 (function () {
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var total = slides.length, cur = 0;
-  slides.forEach(function (s, i) { var p = s.querySelector('.pg'); if (p) p.textContent = (i + 1) + ' / ' + total; });
-  function show(n) {
+  var mobile = window.matchMedia('(max-width: 760px)');
+  var k = 0;
+  slides.forEach(function (s, i) {
+    var p = s.querySelector('.pg'); if (p) p.textContent = (i + 1) + ' / ' + total;
+    var n = s.querySelector('.kicker .num'); if (n) { k++; n.textContent = (k < 10 ? '0' : '') + k; }
+  });
+  function indexOfHash(h) {
+    h = (h || '').replace('#', '');
+    if (!h) return 0;
+    var byId = document.getElementById(h);
+    if (byId && byId.classList.contains('slide')) return slides.indexOf(byId);
+    var n = parseInt(h, 10); return isNaN(n) ? 0 : n - 1;
+  }
+  function show(n, keepHash) {
     cur = Math.max(0, Math.min(total - 1, n));
     slides.forEach(function (s, i) { s.classList.toggle('active', i === cur); });
     document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
-    try { history.replaceState(null, '', '#' + (cur + 1)); } catch (e) {}
+    if (!keepHash) { try { history.replaceState(null, '', '#' + (slides[cur].id || (cur + 1))); } catch (e) {} }
   }
-  var start = parseInt((location.hash || '').replace('#', ''), 10);
-  show(isNaN(start) ? 0 : start - 1);
+  function go(n) { if (mobile.matches) { slides[Math.max(0, Math.min(total - 1, n))].scrollIntoView({ behavior: 'smooth' }); } else { show(n); } }
+  show(indexOfHash(location.hash), true);
+  if (mobile.matches && location.hash) setTimeout(function () { slides[cur].scrollIntoView(); }, 50);
+
   document.getElementById('prev').onclick = function (e) { e.stopPropagation(); show(cur - 1); };
   document.getElementById('next').onclick = function (e) { e.stopPropagation(); show(cur + 1); };
   document.getElementById('fs').onclick = function (e) {
@@ -537,7 +696,60 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
     if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
     else { document.exitFullscreen && document.exitFullscreen(); }
   };
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a.jump'); if (!a) return;
+    e.preventDefault(); e.stopPropagation(); go(indexOfHash(a.getAttribute('href')));
+  });
+
+  /* Hộp xem video YouTube: chỉ tải khi bấm, có thông báo nếu không phát được */
+  var lb = document.getElementById('lightbox'), lbMsg = document.getElementById('lbMsg'), lbWait = document.getElementById('lbWait');
+  var player = null, apiState = 0, pending = null, failT = null;
+  function fail() { clearTimeout(failT); lbWait.style.display = 'none'; lbMsg.classList.add('show'); }
+  function makePlayer(vid) {
+    var holder = document.getElementById('lbPlayer');
+    holder.innerHTML = '<div id="lbYT"></div>';
+    try {
+      player = new YT.Player('lbYT', {
+        host: 'https://www.youtube-nocookie.com', videoId: vid, width: '100%', height: '100%',
+        playerVars: { playsinline: 1, rel: 0, modestbranding: 1 },
+        events: {
+          onReady: function () { clearTimeout(failT); lbWait.style.display = 'none'; },
+          onError: fail
+        }
+      });
+    } catch (err) { fail(); }
+  }
+  window.onYouTubeIframeAPIReady = function () { apiState = 2; if (pending) { makePlayer(pending); pending = null; } };
+  function openVideo(vid, title) {
+    document.getElementById('lbTitle').textContent = title || '';
+    document.getElementById('lbOut').href = 'https://www.youtube.com/shorts/' + vid;
+    lbMsg.classList.remove('show'); lbWait.style.display = 'grid';
+    lb.classList.add('open');
+    clearTimeout(failT); failT = setTimeout(fail, 10000);
+    if (apiState === 2) { makePlayer(vid); return; }
+    pending = vid;
+    if (apiState === 0) {
+      apiState = 1;
+      var tag = document.createElement('script'); tag.src = 'https://www.youtube.com/iframe_api';
+      tag.onerror = function () { apiState = 0; fail(); };
+      document.head.appendChild(tag);
+    }
+  }
+  function closeVideo() {
+    clearTimeout(failT); pending = null;
+    if (player && player.destroy) { try { player.destroy(); } catch (e) {} }
+    player = null; document.getElementById('lbPlayer').innerHTML = '';
+    lb.classList.remove('open');
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-vid]'), function (b) {
+    b.addEventListener('click', function (e) { e.stopPropagation(); openVideo(b.getAttribute('data-vid'), b.getAttribute('data-title')); });
+  });
+  document.getElementById('lbClose').onclick = function (e) { e.stopPropagation(); closeVideo(); };
+  lb.addEventListener('click', function (e) { e.stopPropagation(); if (e.target === lb) closeVideo(); });
+
   document.addEventListener('keydown', function (e) {
+    if (lb.classList.contains('open')) { if (e.key === 'Escape') closeVideo(); return; }
+    if (mobile.matches) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(cur + 1); }
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(cur - 1); }
     else if (e.key === 'Home') show(0);
@@ -545,18 +757,20 @@ table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rg
     else if (e.key === 'f' || e.key === 'F') document.getElementById('fs').click();
   });
   document.getElementById('deck').addEventListener('click', function (e) {
+    if (mobile.matches || e.target.closest('a, button, .vcell')) return;
     var r = this.getBoundingClientRect();
     show(e.clientX - r.left < r.width * 0.3 ? cur - 1 : cur + 1);
+  });
+  var tx = null;
+  document.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (tx === null || mobile.matches || lb.classList.contains('open')) { tx = null; return; }
+    var dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) show(dx < 0 ? cur + 1 : cur - 1); tx = null;
   });
   var nav = document.getElementById('nav'), idleT = null;
   function wake() { nav.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(function () { nav.classList.add('idle'); }, 2500); }
   document.addEventListener('mousemove', wake); wake();
-  var tx = null;
-  document.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
-  document.addEventListener('touchend', function (e) {
-    if (tx === null) return; var dx = e.changedTouches[0].clientX - tx;
-    if (Math.abs(dx) > 40) show(dx < 0 ? cur + 1 : cur - 1); tx = null;
-  });
 })();
 </script>
 </body>
