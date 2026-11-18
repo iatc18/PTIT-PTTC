@@ -275,20 +275,20 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
 
 
 /* Slide minh họa tài liệu (phiếu, báo cáo) */
-.demo { display: grid; grid-template-columns: auto 1fr; gap: calc(2.6 * var(--u)); flex: 1; min-height: 0; align-items: stretch; }
+.demo { display: grid; grid-template-columns: auto 1fr; gap: calc(2.6 * var(--u)); align-items: start; }
 .doc { position: relative; display: block; border: 1px solid var(--rule); border-radius: calc(0.6 * var(--u)); overflow: hidden; background: #fff; padding: 0; cursor: zoom-in; box-shadow: 0 calc(0.4 * var(--u)) calc(1.4 * var(--u)) rgba(11,31,58,0.12); }
-.doc img { display: block; height: 100%; width: auto; }
+.doc img { display: block; height: calc(35 * var(--u)); width: auto; }
+.docs3 .doc img { height: calc(29 * var(--u)); }
 .doc .zoom { position: absolute; right: calc(0.7 * var(--u)); bottom: calc(0.7 * var(--u)); background: var(--navy); color: #fff; font-family: var(--font); font-size: calc(0.9 * var(--u)); font-weight: 700; padding: calc(0.35 * var(--u)) calc(0.8 * var(--u)); border-radius: 99px; }
 .doc:hover .zoom, .doc:focus-visible .zoom { background: var(--orange); }
-.docs3 { display: flex; gap: calc(1.2 * var(--u)); height: 100%; min-height: 0; }
-.docs3 .doc { height: 100%; }
+.docs3 { display: flex; gap: calc(1.2 * var(--u)); align-items: flex-start; }
 .points { display: flex; flex-direction: column; gap: calc(1.1 * var(--u)); }
 .point { display: flex; gap: calc(1.1 * var(--u)); align-items: flex-start; background: var(--surface); border: 1px solid var(--rule); border-radius: calc(0.9 * var(--u)); padding: calc(1.2 * var(--u)) calc(1.4 * var(--u)); }
 .point .pn { flex: none; width: calc(2.6 * var(--u)); height: calc(2.6 * var(--u)); border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff; font-weight: 800; font-size: calc(1.05 * var(--u)); }
 .point b { display: block; font-size: calc(1.3 * var(--u)); color: var(--navy); margin-bottom: calc(0.2 * var(--u)); }
 .point span { font-size: calc(1.08 * var(--u)); color: var(--ink-2); }
 .anon { margin-top: auto; font-size: calc(0.95 * var(--u)); color: var(--ink-3); display: flex; align-items: center; gap: calc(0.6 * var(--u)); }
-.anon i { font-style: normal; display: inline-block; padding: calc(0.2 * var(--u)) calc(0.7 * var(--u)); border-radius: 99px; background: rgba(11,31,58,0.07); color: var(--navy); font-weight: 700; }
+.anon i { font-style: normal; display: inline-block; white-space: nowrap; padding: calc(0.2 * var(--u)) calc(0.7 * var(--u)); border-radius: 99px; background: rgba(11,31,58,0.07); color: var(--navy); font-weight: 700; }
 .callout.small { font-size: calc(1.1 * var(--u)); padding: calc(1 * var(--u)) calc(1.4 * var(--u)); margin-top: 0; }
 
 /* Hộp xem tài liệu: phóng to, lật trang */
@@ -385,7 +385,7 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
   .gains { padding: calc(3.5 * var(--u)); }
   .unote { font-size: calc(3.2 * var(--u)); }
   .demo { grid-template-columns: 1fr !important; gap: calc(5 * var(--u)); }
-  .doc img { width: 100%; height: auto; }
+  .doc img, .docs3 .doc img { width: 100%; height: auto; }
   .docs3 { height: auto; gap: calc(2.5 * var(--u)); }
   .docs3 .doc { height: auto; flex: 1; }
   .doc .zoom { font-size: calc(2.6 * var(--u)); padding: calc(1 * var(--u)) calc(2.2 * var(--u)); right: calc(2 * var(--u)); bottom: calc(2 * var(--u)); }
@@ -440,7 +440,7 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
   <div class="body">
     <div class="grid g4">
       <div class="kpi k1"><div class="v">3</div><div class="l">Khóa coaching nối tiếp</div><div class="d">K1 Nhà máy · K2 Quản lý văn phòng · K3 Toàn công ty</div></div>
-      <div class="kpi k2"><div class="v"><span class="sop-n">8</span><small>+</small></div><div class="l">Quy trình (SOP) có nhúng AI</div><div class="d">Đang dùng hằng ngày; con số tăng theo tiến độ</div></div>
+      <div class="kpi k2"><div class="v"><span class="sop-n">30</span><small>+</small></div><div class="l">SOP có nhúng AI</div><div class="d">Riêng khối nhà máy; con số tăng hằng ngày</div></div>
       <div class="kpi k3"><div class="v">2</div><div class="l">Công cụ AI chủ lực</div><div class="d">Claude Pro và Gemini, dùng thành thạo trong công việc</div></div>
       <div class="kpi k4"><div class="v">100<small>%</small></div><div class="l">Nhân sự đạt chuẩn năng lực</div><div class="d">Ngưỡng đạt 7/10; chưa đạt làm lại đến khi đạt</div></div>
     </div>
@@ -725,7 +725,7 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
     <div class="res" style="flex:1">
       <div class="card"><div class="big">4<small>bộ tư duy</small></div><div><h3>Tư duy nền tảng cho toàn bộ nhân sự</h3><p>Toàn bộ nhân sự được trang bị <a class="jump" href="#tu-duy">4 bộ tư duy nền tảng</a> khi làm việc cùng AI: AI First, Hệ thống, Phản biện, Linh hoạt.</p></div></div>
       <div class="card"><div class="big">2<small>công cụ</small></div><div><h3>Thành thạo Claude Pro và Gemini</h3><p>Sử dụng thành thạo hai công cụ AI chính trong công việc hằng ngày.</p></div></div>
-      <div class="card"><div class="big"><span class="sop-n">8</span><span style="font-size:calc(2 * var(--u));color:var(--orange)">+</span><small>SOP có AI</small></div><div><h3>Quy trình có nhúng AI đang vận hành</h3><p>Từ <span class="sop-n">8</span> SOP đầu tiên của khóa K1, K2, số quy trình nhúng AI tiếp tục tăng ở cả khối nhà máy và văn phòng.</p></div></div>
+      <div class="card"><div class="big"><span class="sop-n">30</span><span style="font-size:calc(2 * var(--u));color:var(--orange)">+</span><small>SOP có AI</small></div><div><h3>Quy trình có nhúng AI đang vận hành</h3><p>Riêng khối nhà máy đã có hơn <span class="sop-n">30</span> SOP và câu lệnh AI chuẩn hóa; khối văn phòng tiếp tục bổ sung hằng ngày.</p></div></div>
       <div class="card" style="background:var(--navy);border-color:var(--navy)"><div class="big" style="color:#fff">100<span style="font-size:calc(2 * var(--u));color:var(--orange)">%</span><small style="color:var(--orange)">đạt yêu cầu</small></div><div><h3 style="color:#fff">Nhân sự đạt chuẩn năng lực</h3><p style="color:#C7D2E1">Thi cuối mỗi tháng, phiếu điểm cá nhân; chưa đạt 7/10 làm lại đến khi đạt.</p></div></div>
     </div>
   </div>
@@ -742,7 +742,7 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
       <div class="factory">
         <span class="flag">▶ Khối nhà máy · trọng tâm sản xuất</span>
         <div>
-          <h3>SOP có nhúng AI trong vận hành nhà máy</h3>
+          <h3>Hơn <span class="sop-n">30</span> SOP có nhúng AI trong vận hành nhà máy</h3>
           <ul class="ulist two">
             <li>Bảo trì thiết bị theo quy trình chuẩn hóa</li>
             <li>Kiểm soát chất lượng, có sẵn câu lệnh AI</li>
@@ -834,7 +834,7 @@ a.jump:hover { border-bottom-color: var(--orange-ink); }
 
 <script>
 /* SỐ SOP CÓ AI: chỉ sửa ở đây khi có số mới (Thầy Long duyệt) */
-var SOP_COUNT = 8;
+var SOP_COUNT = 30;
 document.querySelectorAll('.sop-n').forEach(function (e) { e.textContent = SOP_COUNT; });
 (function () {
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
