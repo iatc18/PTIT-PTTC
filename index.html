@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Chương trình Coaching AI cho Doanh nghiệp Sản xuất · Case study Công ty N</title>
+<link rel="icon" href="favicon.ico?v=2" sizes="48x48">
+<link rel="apple-touch-icon" href="assets/brand/IATC-icon-app-180px.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1F3A;
+  --navy-2: #14305A;
+  --orange: #FF6B1A;
+  --orange-ink: #C94A06;
+  --green: #00D68F;
+  --green-ink: #008A5C;
+  --cyan: #00C2FF;
+  --cyan-ink: #0079A8;
+  --bg: #F4F7FB;
+  --surface: #FFFFFF;
+  --ink: #0B1F3A;
+  --ink-2: #3E5068;
+  --ink-3: #66788F;
+  --rule: #DCE4EE;
+  --font: "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: #0A1424; font-family: var(--font); color: var(--ink); overflow: hidden; }
+
+/* Khung trình chiếu 16:9, co giãn theo cửa sổ */
+.stage { position: fixed; inset: 0; display: grid; place-items: center; }
+.deck {
+  position: relative;
+  width: min(100vw, calc(100vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  container-type: size;
+}
+.slide {
+  position: absolute; inset: 0;
+  background: var(--bg);
+  display: none;
+  flex-direction: column;
+  padding: 4cqw 5cqw 4.6cqw;
+  overflow: hidden;
+  font-size: 1.25cqw;
+  line-height: 1.5;
+}
+.slide.active { display: flex; }
+
+/* Đầu và chân slide */
+.kicker { display: flex; align-items: center; gap: 0.9cqw; font-size: 0.95cqw; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-ink); }
+.kicker .num { display: inline-grid; place-items: center; min-width: 2.2cqw; height: 2.2cqw; padding: 0 0.5cqw; border-radius: 0.4cqw; background: var(--navy); color: #fff; letter-spacing: 0; }
+h2 { margin: 1cqw 0 0; font-size: 2.9cqw; line-height: 1.18; font-weight: 800; letter-spacing: -0.01em; color: var(--navy); max-width: 75cqw; text-wrap: balance; }
+.lead { margin: 1.1cqw 0 0; font-size: 1.4cqw; color: var(--ink-2); max-width: 72cqw; text-wrap: pretty; }
+.body { flex: 1; min-height: 0; margin-top: 2.4cqw; display: flex; flex-direction: column; }
+.foot { position: absolute; left: 5cqw; right: 5cqw; bottom: 1.6cqw; display: flex; align-items: center; justify-content: space-between; font-size: 0.85cqw; color: var(--ink-3); }
+.foot .brand { display: flex; align-items: center; gap: 0.8cqw; }
+.foot img { height: 1.5cqw; width: auto; display: block; }
+.band4 { display: flex; height: 0.55cqw; position: absolute; left: 0; right: 0; bottom: 0; }
+.band4 i { display: block; }
+.band4 .b1 { flex: 46; background: var(--navy); }
+.band4 .b2 { flex: 18; background: var(--cyan); }
+.band4 .b3 { flex: 18; background: var(--green); }
+.band4 .b4 { flex: 18; background: var(--orange); }
+
+/* Thành phần dùng chung */
+.grid { display: grid; gap: 1.6cqw; }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; padding: 1.7cqw 1.8cqw; }
+.card h3 { margin: 0 0 0.6cqw; font-size: 1.45cqw; line-height: 1.3; color: var(--navy); font-weight: 700; }
+.card p { margin: 0; color: var(--ink-2); }
+.tag { display: inline-block; font-size: 0.85cqw; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3cqw 0.8cqw; border-radius: 99px; }
+.t-orange { background: rgba(255,107,26,0.12); color: var(--orange-ink); }
+.t-green { background: rgba(0,214,143,0.14); color: var(--green-ink); }
+.t-cyan { background: rgba(0,194,255,0.14); color: var(--cyan-ink); }
+.t-navy { background: rgba(11,31,58,0.08); color: var(--navy); }
+.accent-top { border-top: 0.35cqw solid var(--orange); }
+.idx { font-size: 2.6cqw; font-weight: 800; color: var(--orange); line-height: 1; margin-bottom: 0.9cqw; }
+.callout { margin-top: auto; background: var(--navy); color: #fff; border-radius: 0.9cqw; padding: 1.4cqw 2cqw; font-size: 1.35cqw; display: flex; gap: 1.2cqw; align-items: center; }
+.callout b { color: var(--orange); }
+.callout .bar { width: 0.35cqw; align-self: stretch; background: var(--orange); border-radius: 2px; }
+
+/* Slide bìa */
+.cover { background: var(--navy); color: #fff; padding: 4.6cqw 6cqw 4cqw; }
+.cover .glow { position: absolute; right: -14cqw; top: -18cqw; width: 62cqw; height: 62cqw; border-radius: 50%; background: radial-gradient(circle, rgba(0,194,255,0.20) 0%, rgba(0,194,255,0) 62%); pointer-events: none; }
+.cover .dial { position: absolute; right: 6cqw; top: 50%; transform: translateY(-50%); width: 25cqw; opacity: 0.9; }
+.cover .logo { height: 4.2cqw; width: auto; display: block; align-self: flex-start; }
+.cover .eyebrow { margin-top: auto; font-size: 1.05cqw; font-weight: 700; letter-spacing: 0.16em; color: var(--orange); text-transform: uppercase; }
+.cover h1 { margin: 1.4cqw 0 0; font-size: 4.3cqw; line-height: 1.12; font-weight: 800; letter-spacing: -0.01em; max-width: 58cqw; }
+.cover .sub { margin: 1.8cqw 0 0; font-size: 1.6cqw; color: #C7D2E1; max-width: 54cqw; line-height: 1.45; }
+.cover .meta { margin-top: auto; display: flex; gap: 3cqw; font-size: 1.05cqw; color: #B9C6D8; border-top: 1px solid rgba(255,255,255,0.16); padding-top: 1.6cqw; }
+.cover .meta strong { display: block; color: #fff; font-size: 1.2cqw; font-weight: 600; margin-top: 0.2cqw; }
+
+/* Tóm tắt: ô số liệu */
+.kpi { background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; padding: 1.8cqw 1.8cqw 1.6cqw; display: flex; flex-direction: column; gap: 0.5cqw; }
+.kpi .v { font-size: 4.6cqw; font-weight: 800; line-height: 1; color: var(--navy); letter-spacing: -0.02em; }
+.kpi .v small { font-size: 2cqw; font-weight: 700; color: var(--orange); margin-left: 0.2cqw; }
+.kpi .l { font-size: 1.25cqw; font-weight: 600; color: var(--navy); line-height: 1.35; }
+.kpi .d { font-size: 1.05cqw; color: var(--ink-3); }
+.kpi.k1 { border-top: 0.35cqw solid var(--navy); }
+.kpi.k2 { border-top: 0.35cqw solid var(--cyan); }
+.kpi.k3 { border-top: 0.35cqw solid var(--green); }
+.kpi.k4 { border-top: 0.35cqw solid var(--orange); }
+
+/* Bảng so sánh */
+table.cmp { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 1.15cqw; background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; overflow: hidden; }
+table.cmp th, table.cmp td { padding: 0.95cqw 1.5cqw; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+table.cmp tr:last-child td { border-bottom: 0; }
+table.cmp thead th { font-size: 1.05cqw; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
+table.cmp thead th:nth-child(1) { background: var(--bg); color: var(--ink-3); width: 20%; }
+table.cmp thead th:nth-child(2) { background: #E9EEF5; color: var(--ink-2); width: 36%; }
+table.cmp thead th:nth-child(3) { background: var(--navy); color: #fff; }
+table.cmp td:nth-child(1) { font-weight: 700; color: var(--navy); background: var(--bg); }
+table.cmp td:nth-child(2) { color: var(--ink-3); }
+table.cmp td:nth-child(3) { color: var(--navy); font-weight: 600; background: rgba(255,107,26,0.06); border-left: 0.3cqw solid var(--orange); }
+
+/* Lợi ích */
+.metric { display: flex; flex-direction: column; gap: 0.6cqw; }
+.metric .arrow { font-size: 2.4cqw; font-weight: 800; line-height: 1; }
+.up { color: var(--green-ink); }
+.down { color: var(--orange-ink); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6cqw; margin-top: 1.6cqw; }
+.wide { background: var(--navy); color: #fff; border: 0; }
+.wide h3 { color: #fff; }
+.wide p { color: #C7D2E1; }
+.wide .tag { background: rgba(255,255,255,0.12); color: var(--orange); }
+
+/* Lộ trình 3 khóa */
+.track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+.phase { position: relative; padding: 0 1.6cqw 0 0; }
+.phase .dot { width: 2.6cqw; height: 2.6cqw; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 1.05cqw; color: #fff; position: relative; z-index: 1; }
+.phase .line { position: absolute; top: 1.3cqw; left: 2.6cqw; right: 0; height: 0.25cqw; background: var(--rule); }
+.phase:last-child .line { background: linear-gradient(90deg, var(--rule), rgba(220,228,238,0)); }
+.phase .card { margin-top: 1.4cqw; height: calc(100% - 4cqw); display: flex; flex-direction: column; gap: 0.7cqw; }
+.phase .who { font-size: 1.1cqw; color: var(--ink-2); }
+.phase ul { margin: 0.2cqw 0 0; padding-left: 1.3cqw; color: var(--ink-2); font-size: 1.1cqw; }
+.phase ul li { margin: 0.25cqw 0; }
+.phase .status { margin-top: auto; }
+
+/* 4 trụ cột */
+.pillar { display: flex; flex-direction: column; gap: 0.7cqw; }
+.pillar .ic { width: 3.6cqw; height: 3.6cqw; border-radius: 0.8cqw; display: grid; place-items: center; }
+.pillar .ic svg { width: 2.1cqw; height: 2.1cqw; }
+.pillar ul { margin: 0.4cqw 0 0; padding-left: 1.2cqw; color: var(--ink-2); font-size: 1.1cqw; }
+.pillar ul li { margin: 0.25cqw 0; }
+
+/* Chu trình đánh giá */
+.cycle { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.8cqw; }
+.step { background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; padding: 1.4cqw 1.2cqw; position: relative; display: flex; flex-direction: column; gap: 0.5cqw; }
+.step .n { font-size: 0.9cqw; font-weight: 700; letter-spacing: 0.1em; color: var(--ink-3); }
+.step h4 { margin: 0; font-size: 1.2cqw; line-height: 1.3; color: var(--navy); }
+.step p { margin: 0; font-size: 1.02cqw; color: var(--ink-2); line-height: 1.45; }
+.step.hl { background: var(--navy); border-color: var(--navy); }
+.step.hl h4 { color: #fff; }
+.step.hl p { color: #C7D2E1; }
+.step.hl .n { color: var(--orange); }
+.step:not(:last-child)::after { content: ""; position: absolute; right: -0.75cqw; top: 50%; width: 0.7cqw; height: 0.7cqw; border-top: 0.2cqw solid var(--orange); border-right: 0.2cqw solid var(--orange); transform: translateY(-50%) rotate(45deg); background: transparent; z-index: 2; }
+.loop { margin-top: 1.4cqw; display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.6cqw; }
+.scale { display: flex; gap: 0.6cqw; margin-top: 0.8cqw; flex-wrap: wrap; }
+.scale span { font-size: 1cqw; font-weight: 600; padding: 0.45cqw 0.9cqw; border-radius: 0.5cqw; }
+
+/* Đội ngũ */
+.team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; }
+.role { background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; padding: 2cqw; display: flex; flex-direction: column; gap: 0.8cqw; }
+.role .count { font-size: 5.2cqw; font-weight: 800; line-height: 1; color: var(--navy); }
+.role h3 { margin: 0; font-size: 1.55cqw; color: var(--navy); }
+.role ul { margin: 0; padding-left: 1.2cqw; color: var(--ink-2); font-size: 1.12cqw; }
+.role ul li { margin: 0.3cqw 0; }
+
+/* Kết quả */
+.res { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4cqw; }
+.res .card { display: grid; grid-template-columns: 9cqw 1fr; gap: 1.6cqw; align-items: center; padding: 1.6cqw 1.8cqw; }
+.res .big { font-size: 4.4cqw; font-weight: 800; color: var(--navy); line-height: 1; text-align: center; letter-spacing: -0.02em; }
+.res .big small { display: block; font-size: 0.95cqw; font-weight: 700; color: var(--orange-ink); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.5cqw; }
+.res h3 { font-size: 1.4cqw; }
+
+/* Cam kết */
+.commit { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.8cqw; flex: 1; min-height: 0; }
+.four { display: grid; grid-template-columns: 1fr 1fr; gap: 1cqw; margin-top: 1cqw; }
+.four div { background: var(--bg); border-radius: 0.7cqw; padding: 1cqw 1.2cqw; font-weight: 600; color: var(--navy); font-size: 1.2cqw; border-left: 0.3cqw solid var(--cyan); }
+.chain { display: flex; flex-direction: column; gap: 1cqw; }
+.chain .lvl { display: flex; align-items: center; gap: 1.2cqw; background: var(--surface); border: 1px solid var(--rule); border-radius: 0.9cqw; padding: 1.2cqw 1.6cqw; }
+.chain .lvl b { font-size: 1.3cqw; color: var(--navy); display: block; }
+.chain .lvl span { font-size: 1.05cqw; color: var(--ink-2); }
+.chain .lvl .badge { flex: none; width: 3.2cqw; height: 3.2cqw; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #fff; font-size: 1.15cqw; }
+
+/* Slide kết */
+.closing { background: var(--navy); color: #fff; padding: 5cqw 6cqw 4cqw; }
+.closing .logo { height: 4cqw; width: auto; display: block; align-self: flex-start; }
+.closing h2 { color: #fff; font-size: 3.4cqw; max-width: 60cqw; margin-top: auto; }
+.closing .lead { color: #C7D2E1; max-width: 60cqw; }
+.contact { margin-top: auto; display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 3.2cqw; border-top: 1px solid rgba(255,255,255,0.16); padding-top: 1.6cqw; font-size: 1.1cqw; color: #B9C6D8; }
+.contact strong { display: block; color: #fff; font-size: 1.2cqw; font-weight: 600; margin-top: 0.2cqw; }
+.slogan { font-size: 1.15cqw; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-top: 2cqw; }
+
+/* Điều khiển */
+.nav { position: fixed; right: 16px; bottom: 14px; display: flex; gap: 6px; align-items: center; z-index: 10; font-family: var(--font); transition: opacity .3s; }
+.nav.idle { opacity: 0; pointer-events: none; }
+.nav button { width: 38px; height: 38px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); background: rgba(11,31,58,0.75); color: #fff; font-size: 16px; cursor: pointer; }
+.nav button:hover { background: var(--orange); border-color: var(--orange); }
+.nav .count { color: #B9C6D8; font-size: 13px; min-width: 52px; text-align: center; }
+.progress { position: fixed; left: 0; top: 0; height: 3px; background: var(--orange); z-index: 10; transition: width .25s; }
+
+/* In ra PDF: mỗi slide một trang ngang */
+@media print {
+  @page { size: 1600px 900px; margin: 0; }
+  html, body { height: auto; overflow: visible; background: #fff; }
+  .stage { position: static; display: block; }
+  .deck { width: 1600px; height: 900px; aspect-ratio: auto; position: static; container-type: normal; }
+  .slide { position: relative; display: flex !important; width: 1600px; height: 900px; page-break-after: always; break-after: page; }
+  .nav, .progress { display: none; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="stage">
+<div class="deck" id="deck">
+
+<!-- 01 BÌA -->
+<section class="slide cover active">
+  <div class="glow"></div>
+  <img class="dial" src="assets/brand/IATC-icon-dong-ho-nen-toi-1024px.png" alt="">
+  <img class="logo" src="assets/brand/IATC-logo-nen-toi-600px.png" alt="IATC">
+  <div class="eyebrow">Hồ sơ năng lực · Case study Công ty N</div>
+  <h1>CHƯƠNG TRÌNH COACHING AI CHO DOANH NGHIỆP SẢN XUẤT</h1>
+  <p class="sub">Từ đào tạo kiến thức đến năng lực vận hành: kết quả triển khai thực tế tại Công ty N, từ tháng 6/2026 đến nay.</p>
+  <div class="meta">
+    <div>Đơn vị thực hiện<strong>Học viện AI Lab Mastery (ALM) · Trung tâm IATC</strong></div>
+    <div>Tài liệu gửi<strong>PTIT – PTTC</strong></div>
+    <div>Phiên bản<strong>Tháng 11/2026</strong></div>
+  </div>
+  <div class="band4"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i></div>
+</section>
+
+<!-- 02 TÓM TẮT -->
+<section class="slide">
+  <div class="kicker"><span class="num">01</span>Tóm tắt điều hành</div>
+  <h2>Coaching AI dài hạn đã đưa AI vào công việc hằng ngày của Công ty N</h2>
+  <p class="lead">Từ tháng 6/2026, Học viện ALM đồng hành cùng Công ty N qua ba khóa nối tiếp: khối vận hành nhà máy, đội ngũ quản lý khối văn phòng, rồi toàn bộ nhân sự. Mục tiêu không dừng ở việc biết dùng AI, mà là thay đổi cách làm việc và để lại đội AI Mentor nội bộ.</p>
+  <div class="body">
+    <div class="grid g4">
+      <div class="kpi k1"><div class="v">3</div><div class="l">Khóa coaching nối tiếp</div><div class="d">K1 Nhà máy · K2 Quản lý văn phòng · K3 Toàn công ty</div></div>
+      <div class="kpi k2"><div class="v">8</div><div class="l">Quy trình (SOP) có nhúng AI</div><div class="d">Đang sử dụng hằng ngày tại khối K1 và K2</div></div>
+      <div class="kpi k3"><div class="v">2</div><div class="l">Công cụ AI chủ lực</div><div class="d">Claude Pro và Gemini, dùng thành thạo trong công việc</div></div>
+      <div class="kpi k4"><div class="v">100<small>%</small></div><div class="l">Nhân sự đạt chuẩn năng lực</div><div class="d">Ngưỡng đạt 7/10; chưa đạt làm lại đến khi đạt</div></div>
+    </div>
+    <div class="callout"><span class="bar"></span><div>Toàn bộ nhân sự được trang bị <b>4 bộ tư duy nền tảng</b> khi dùng AI, đánh giá bằng bài thi cuối mỗi tháng và phiếu điểm chi tiết cho từng cá nhân.</div></div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- 03 BÀI TOÁN -->
+<section class="slide">
+  <div class="kicker"><span class="num">02</span>Bài toán của doanh nghiệp</div>
+  <h2>Vì sao một khóa training AI thường chưa đủ với doanh nghiệp sản xuất</h2>
+  <p class="lead">Nhiều doanh nghiệp đã cho nhân sự học AI, nhưng sau khóa học quy trình làm việc vẫn gần như không đổi. Khoảng trống nằm ở bước đi từ <em>biết</em> đến <em>làm</em>.</p>
+  <div class="body">
+    <div class="grid g4">
+      <div class="card accent-top"><div class="idx">01</div><h3>Biết nhưng chưa làm</h3><p>Nhân sự hiểu AI trên lớp, nhưng không có ai giúp chuyển kiến thức vào đúng công việc của mình.</p></div>
+      <div class="card accent-top"><div class="idx">02</div><h3>Hiệu quả giảm dần</h3><p>Không có người kèm cặp sau buổi học, kỹ năng mai một và thói quen cũ quay trở lại.</p></div>
+      <div class="card accent-top"><div class="idx">03</div><h3>Khó đo lường</h3><p>Doanh nghiệp khó chứng minh lợi ích bằng năng suất, thời gian, chi phí hay tỷ lệ sai sót.</p></div>
+      <div class="card accent-top"><div class="idx">04</div><h3>Phụ thuộc bên ngoài</h3><p>Khóa học kết thúc là hết người dẫn dắt; doanh nghiệp chưa có đội ngũ tự lan tỏa AI nội bộ.</p></div>
+    </div>
+    <div class="callout"><span class="bar"></span><div>Coaching được thiết kế để lấp đúng khoảng trống này: <b>học trên việc thật, ra sản phẩm thật, đo được và tự duy trì được</b>.</div></div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- 04 SO SÁNH -->
+<section class="slide">
+  <div class="kicker"><span class="num">03</span>Training và Coaching</div>
+  <h2>Training trang bị kiến thức; Coaching tạo ra năng lực vận hành</h2>
+  <div class="body" style="margin-top:2cqw">
+    <table class="cmp">
+      <thead><tr><th>Tiêu chí</th><th>Gói Training AI</th><th>Gói Coaching AI</th></tr></thead>
+      <tbody>
+        <tr><td>Mục tiêu</td><td>Truyền đạt kiến thức và công cụ</td><td>Thay đổi cách làm việc, có sản phẩm đầu ra cụ thể</td></tr>
+        <tr><td>Thời lượng</td><td>Một đến hai ngày, diễn ra một lần</td><td>Dài hạn theo tháng, nhiều khóa nối tiếp theo từng khối</td></tr>
+        <tr><td>Nội dung</td><td>Ví dụ chung, áp dụng cho nhiều ngành</td><td>Bài toán thật trong quy trình của chính doanh nghiệp</td></tr>
+        <tr><td>Sản phẩm đầu ra</td><td>Kiến thức của từng cá nhân</td><td>Quy trình làm việc (SOP) có nhúng AI, dùng hằng ngày</td></tr>
+        <tr><td>Đo lường</td><td>Điểm danh, phiếu khảo sát mức độ hài lòng</td><td>Thi cuối tháng, phiếu điểm cá nhân, chưa đạt thì làm lại</td></tr>
+        <tr><td>Sau khóa học</td><td>Nhân sự tự xoay xở</td><td>Đội AI Mentor nội bộ tiếp tục dẫn dắt và lan tỏa</td></tr>
+        <tr><td>Bản chất</td><td>Chi phí đào tạo</td><td>Đầu tư vào năng lực của tổ chức</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- 05 LỢI ÍCH -->
+<section class="slide">
+  <div class="kicker"><span class="num">04</span>Lợi ích cho doanh nghiệp</div>
+  <h2>Doanh nghiệp nhận được gì khi chọn Coaching thay vì Training</h2>
+  <p class="lead">Lợi ích được đo trên chính các quy trình đã nhúng AI, theo bốn chỉ số vận hành, và được giữ lại lâu dài nhờ hai giá trị nền tảng.</p>
+  <div class="body" style="margin-top:2cqw">
+    <div class="grid g4">
+      <div class="card metric"><div class="arrow up">▲</div><h3>Tăng năng suất</h3><p>Mỗi nhân sự xử lý được nhiều việc hơn với cùng nguồn lực.</p></div>
+      <div class="card metric"><div class="arrow down">▼</div><h3>Giảm thời gian</h3><p>Rút ngắn các bước soạn thảo, tổng hợp, tra cứu, báo cáo.</p></div>
+      <div class="card metric"><div class="arrow down">▼</div><h3>Giảm chi phí</h3><p>Giảm giờ công cho việc lặp lại và chi phí làm lại.</p></div>
+      <div class="card metric"><div class="arrow down">▼</div><h3>Giảm sai sót</h3><p>Quy trình chuẩn hóa có AI kiểm tra, ít phụ thuộc vào trí nhớ cá nhân.</p></div>
+    </div>
+    <div class="split">
+      <div class="card wide"><span class="tag">Giá trị nền tảng 1</span><h3 style="margin-top:0.8cqw">Tri thức được giữ trong quy trình</h3><p>Cách làm tốt được viết thành SOP có AI, không mất đi khi nhân sự thay đổi.</p></div>
+      <div class="card wide"><span class="tag">Giá trị nền tảng 2</span><h3 style="margin-top:0.8cqw">Đội AI Mentor nội bộ</h3><p>Doanh nghiệp tự đào tạo người mới và tiếp tục cải tiến, hướng tới tổ chức học tập.</p></div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- 06 LỘ TRÌNH 3 KHÓA -->
+<section class="slide">
+  <div class="kicker"><span class="num">05</span>Triển khai tại Công ty N</div>
+  <h2>Ba khóa coaching, lan tỏa từ nhà máy đến toàn công ty</h2>
+  <p class="lead">Bắt đầu từ lõi sản xuất và đội ngũ quản lý, để khi mở rộng ra toàn công ty đã có quy trình mẫu và người dẫn dắt.</p>
+  <div class="body">
+    <div class="track" style="flex:1">
+      <div class="phase">
+        <div class="dot" style="background:var(--navy)">K1</div><div class="line"></div>
+        <div class="card">
+          <span class="tag t-navy" style="align-self:flex-start">Khối Vận hành Nhà máy</span>
+          <h3>Vận hành sản xuất</h3>
+          <div class="who">Nhân sự khối vận hành nhà máy sản xuất.</div>
+          <ul><li>Tư duy và công cụ AI cho công việc nhà máy</li><li>Đưa AI vào quy trình vận hành</li></ul>
+          <div class="status"><span class="tag t-green">Đã hoàn thành</span></div>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="dot" style="background:var(--cyan-ink)">K2</div><div class="line"></div>
+        <div class="card">
+          <span class="tag t-cyan" style="align-self:flex-start">Khối Văn phòng</span>
+          <h3>Trưởng và phó bộ phận</h3>
+          <div class="who">Đội ngũ quản lý của ba bộ phận:</div>
+          <ul><li>Hành chính Nhân sự</li><li>Tài chính Kế toán</li><li>Tiếp thị Bán hàng</li></ul>
+          <div class="status"><span class="tag t-green">Đã hoàn thành</span></div>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="dot" style="background:var(--orange)">K3</div><div class="line"></div>
+        <div class="card">
+          <span class="tag t-orange" style="align-self:flex-start">Toàn công ty</span>
+          <h3>Toàn bộ nhân sự các khối</h3>
+          <div class="who">Mở rộng ra tất cả nhân sự, học tập trung tại nhà máy.</div>
+          <ul><li>Kế thừa SOP mẫu từ K1, K2</li><li>Đội AI Mentor nội bộ cùng tham gia kèm cặp</li></ul>
+          <div class="status"><span class="tag t-orange">Đang triển khai từ 11/2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- 07 NỘI DUNG 4 TRỤ CỘT -->
+<section class="slide">
+  <div class="kicker"><span class="num">06</span>Nội dung coaching</div>
+  <h2>Bốn trụ cột: từ tư duy đến đội ngũ tự vận hành</h2>
+  <div class="body">
+    <div class="grid g4" style="flex:1">
+      <div class="card pillar accent-top">
+        <div class="ic" style="background:rgba(11,31,58,0.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#0B1F3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div>
+        <div class="tag t-navy" style="align-self:flex-start">Trụ cột 1</div>
+        <h3>Tư duy AI</h3>
+        <p>Hiểu đúng AI làm được gì, không làm được gì, và cách giao việc cho AI như giao cho một cộng sự.</p>
+        <ul><li>4 bộ tư duy nền tảng khi dùng AI</li><li>Kiểm chứng kết quả, bảo mật dữ liệu</li></ul>
+      </div>
+      <div class="card pillar accent-top">
+        <div class="ic" style="background:rgba(0,194,255,0.14)"><svg viewBox="0 0 24 24" fill="none" stroke="#0079A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div>
+        <div class="tag t-cyan" style="align-self:flex-start">Trụ cột 2</div>
+        <h3>Công cụ AI</h3>
+        <p>Thành thạo hai công cụ chủ lực, dùng được ngay trong công việc hằng ngày.</p>
+        <ul><li>Claude Pro</li><li>Gemini</li></ul>
+      </div>
+      <div class="card pillar accent-top">
+        <div class="ic" style="background:rgba(0,214,143,0.14)"><svg viewBox="0 0 24 24" fill="none" stroke="#008A5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4M17.5 10v4M6.5 10v7.5H14"/></svg></div>
+        <div class="tag t-green" style="align-self:flex-start">Trụ cột 3</div>
+        <h3>Ứng dụng AI vào SOP</h3>
+        <p>Đưa AI vào các quy trình làm việc thực tế tại Công ty N.</p>
+        <ul><li>Tăng năng suất</li><li>Giảm thời gian, giảm chi phí</li><li>Giảm sai sót</li></ul>
+      </div>
+      <div class="card pillar accent-top">
+        <div class="ic" style="background:rgba(255,107,26,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#C94A06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.5"/><path d="M2.5 21v-1.5A5.5 5.5 0 0 1 8 14h2a5.5 5.5 0 0 1 5.5 5.5V21"/><path d="M16 3.5a3.5 3.5 0 0 1 0 7M21.5 21v-1.5a5.5 5.5 0 0 0-3.5-5.1"/></svg></div>
+        <div class="tag t-orange" style="align-self:flex-start">Trụ cột 4</div>
+        <h3>Đội AI Mentor nội bộ</h3>
+        <p>Đào tạo đội ngũ AI Mentor của Công ty N với năng lực chuyên gia kép:</p>
+        <ul><li>Giỏi chuyên môn công việc</li><li>Giỏi ứng dụng AI</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- 08 PHƯƠNG PHÁP & ĐÁNH GIÁ -->
+<section class="slide">
+  <div class="kicker"><span class="num">07</span>Phương pháp và kiểm soát chất lượng</div>
+  <h2>Chu trình hằng tháng bảo đảm không ai bị bỏ lại phía sau</h2>
+  <p class="lead">Phương pháp AI Kaizen: bài học ngắn 10–15 phút, thực hành ngay trên công việc thật, đánh giá định kỳ và kèm cặp đến khi đạt.</p>
+  <div class="body" style="margin-top:2cqw">
+    <div class="cycle">
+      <div class="step"><div class="n">BƯỚC 1</div><h4>Học ngắn</h4><p>Bài AI Kaizen 10–15 phút, giao và nộp bài trực tuyến.</p></div>
+      <div class="step"><div class="n">BƯỚC 2</div><h4>Thực hành trên việc thật</h4><p>Áp dụng vào nhiệm vụ của chính vị trí công việc.</p></div>
+      <div class="step"><div class="n">BƯỚC 3</div><h4>Kèm cặp</h4><p>AI Mentor hỗ trợ theo nhóm, gỡ vướng kịp thời.</p></div>
+      <div class="step"><div class="n">BƯỚC 4</div><h4>Thi cuối tháng</h4><p>Bài thi đánh giá năng lực định kỳ mỗi tháng.</p></div>
+      <div class="step"><div class="n">BƯỚC 5</div><h4>Phiếu điểm cá nhân</h4><p>Chấm, nhận xét và xuất phiếu điểm chi tiết cho từng người.</p></div>
+      <div class="step hl"><div class="n">BƯỚC 6</div><h4>Chưa đạt thì làm lại</h4><p>Dưới 7/10 phải làm lại cho đến khi đạt.</p></div>
+    </div>
+    <div class="loop">
+      <div class="card">
+        <h3>Thang xếp loại</h3>
+        <p>Ngưỡng đạt yêu cầu là 7/10. Kết quả được gửi riêng cho từng học viên và tổng hợp cho ban lãnh đạo.</p>
+        <div class="scale">
+          <span style="background:rgba(0,214,143,0.16);color:var(--green-ink)">Giỏi: từ 9</span>
+          <span style="background:rgba(0,194,255,0.16);color:var(--cyan-ink)">Tốt: từ 8</span>
+          <span style="background:rgba(11,31,58,0.08);color:var(--navy)">Đạt: từ 7</span>
+          <span style="background:rgba(255,107,26,0.14);color:var(--orange-ink)">Chưa đạt: dưới 7, làm lại</span>
+        </div>
+      </div>
+      <div class="card wide" style="display:flex;flex-direction:column;justify-content:center">
+        <span class="tag" style="align-self:flex-start">Kết quả</span>
+        <h3 style="margin-top:0.8cqw;font-size:2.2cqw">100% nhân sự đạt yêu cầu</h3>
+        <p>Nhờ cơ chế làm lại bắt buộc, không có học viên nào kết thúc khóa dưới chuẩn.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- 09 ĐỘI NGŨ -->
+<section class="slide">
+  <div class="kicker"><span class="num">08</span>Đội ngũ triển khai</div>
+  <h2>Sáu người đồng hành cùng doanh nghiệp trong suốt chương trình</h2>
+  <p class="lead">Mỗi vai trò có nhiệm vụ riêng, để chuyên gia tập trung vào chất lượng chuyên môn, AI Mentor bám sát học viên và Admin giữ nhịp vận hành.</p>
+  <div class="body" style="margin-top:2cqw">
+    <div class="team" style="flex:1">
+      <div class="role accent-top">
+        <div class="count">2</div><h3>Chuyên gia chính</h3>
+        <ul><li>Thiết kế chương trình theo từng khối</li><li>Giảng dạy và coaching đội ngũ quản lý</li><li>Cùng doanh nghiệp xây dựng và nghiệm thu SOP có AI</li></ul>
+      </div>
+      <div class="role" style="border-top:0.35cqw solid var(--cyan)">
+        <div class="count">3</div><h3>AI Mentor</h3>
+        <ul><li>Kèm cặp học viên theo nhóm</li><li>Hỗ trợ thực hành trên công việc thật</li><li>Chấm bài, nhận xét và theo dõi tiến bộ</li></ul>
+      </div>
+      <div class="role" style="border-top:0.35cqw solid var(--green)">
+        <div class="count">1</div><h3>Admin</h3>
+        <ul><li>Vận hành lớp, lịch học và nhóm học viên</li><li>Nhắc bài, tổng hợp điểm</li><li>Xuất phiếu điểm cá nhân và báo cáo định kỳ</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- 10 KẾT QUẢ -->
+<section class="slide">
+  <div class="kicker"><span class="num">09</span>Kết quả đạt được</div>
+  <h2>Kết quả tại Công ty N: đo được, kiểm chứng được</h2>
+  <div class="body">
+    <div class="res" style="flex:1">
+      <div class="card"><div class="big">4<small>bộ tư duy</small></div><div><h3>Tư duy nền tảng cho toàn bộ nhân sự</h3><p>Toàn bộ nhân sự được trang bị bốn bộ tư duy nền tảng khi làm việc cùng AI.</p></div></div>
+      <div class="card"><div class="big">2<small>công cụ</small></div><div><h3>Thành thạo Claude Pro và Gemini</h3><p>Sử dụng thành thạo hai công cụ AI chính trong công việc hằng ngày.</p></div></div>
+      <div class="card"><div class="big">8<small>SOP có AI</small></div><div><h3>Quy trình có nhúng AI đang vận hành</h3><p>Khóa K1 và K2 đã có 8 quy trình làm việc nhúng AI, được sử dụng hằng ngày.</p></div></div>
+      <div class="card" style="background:var(--navy);border-color:var(--navy)"><div class="big" style="color:#fff">100<span style="font-size:2cqw;color:var(--orange)">%</span><small style="color:var(--orange)">đạt yêu cầu</small></div><div><h3 style="color:#fff">Nhân sự đạt chuẩn năng lực</h3><p style="color:#C7D2E1">Thi cuối mỗi tháng, phiếu điểm cá nhân; chưa đạt 7/10 làm lại đến khi đạt.</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- 11 CAM KẾT ĐẦU RA -->
+<section class="slide">
+  <div class="kicker"><span class="num">10</span>Cam kết đầu ra của gói Coaching</div>
+  <h2>Giá trị doanh nghiệp giữ lại sau khi chương trình kết thúc</h2>
+  <div class="body">
+    <div class="commit">
+      <div class="card" style="display:flex;flex-direction:column">
+        <span class="tag t-cyan" style="align-self:flex-start">Cho từng học viên</span>
+        <h3 style="margin-top:0.8cqw">Nắm vững bốn yếu tố</h3>
+        <p>Mỗi học viên hoàn thành chương trình với đủ bốn yếu tố để tự ứng dụng AI vào công việc.</p>
+        <div class="four"><div>Kiến thức</div><div>Kỹ năng</div><div>Quy trình</div><div>Công cụ AI</div></div>
+        <div class="callout" style="font-size:1.2cqw"><span class="bar"></span><div>Triết lý của Học viện ALM: <b>đào tạo ra người giỏi hơn mình</b>.</div></div>
+      </div>
+      <div class="chain">
+        <div class="lvl"><div class="badge" style="background:var(--navy)">1</div><div><b>SOP có AI, đo đếm được</b><span>Mỗi khối có quy trình nhúng AI với chỉ số đo được về thời gian, chi phí, sai sót.</span></div></div>
+        <div class="lvl"><div class="badge" style="background:var(--cyan-ink)">2</div><div><b>Năng lực AI Mentor căn bản</b><span>Nhân sự nòng cốt đủ năng lực hướng dẫn đồng nghiệp ứng dụng AI.</span></div></div>
+        <div class="lvl"><div class="badge" style="background:var(--green-ink)">3</div><div><b>Đội AI Mentor nội bộ</b><span>Doanh nghiệp tự đào tạo người mới, tự cải tiến quy trình.</span></div></div>
+        <div class="lvl" style="background:var(--navy);border-color:var(--navy)"><div class="badge" style="background:var(--orange)">4</div><div><b style="color:#fff">Tổ chức học tập</b><span style="color:#C7D2E1">AI trở thành năng lực bền vững của doanh nghiệp, không phụ thuộc đơn vị đào tạo.</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><div class="brand"><img src="assets/brand/IATC-logo-mau-chinh-600px.png" alt="IATC">Học viện ALM · Coaching AI cho doanh nghiệp sản xuất</div><div class="pg"></div></div>
+</section>
+
+<!-- 12 KẾT -->
+<section class="slide closing">
+  <div class="glow" style="position:absolute;right:-14cqw;bottom:-22cqw;width:60cqw;height:60cqw;border-radius:50%;background:radial-gradient(circle, rgba(255,107,26,0.16) 0%, rgba(255,107,26,0) 62%)"></div>
+  <img class="logo" src="assets/brand/IATC-logo-nen-toi-600px.png" alt="IATC">
+  <h2>Sẵn sàng đồng hành cùng doanh nghiệp sản xuất tiếp theo</h2>
+  <p class="lead">Học viện AI Lab Mastery (ALM) và Trung tâm Đào tạo AI Công nghiệp IATC mong được trao đổi thêm về chương trình Coaching AI phù hợp với từng doanh nghiệp.</p>
+  <div class="slogan">Tiến bộ mỗi ngày · Onward &amp; Upward · #KeepRising</div>
+  <div class="contact">
+    <div>Website<strong>iatcvn.com</strong></div>
+    <div>Email<strong>hcm@iatcvn.com</strong></div>
+    <div>Điện thoại<strong>038 997 3818</strong></div>
+    <div>Địa chỉ<strong>Lầu 1, tòa nhà NORAHWAY, 18bis/18 Nguyễn Thị Minh Khai,<br>phường Sài Gòn, Thành phố Hồ Chí Minh</strong></div>
+  </div>
+  <div class="band4"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i></div>
+</section>
+
+</div>
+</div>
+
+<div class="nav" id="nav"><button id="prev" aria-label="Slide trước" title="Slide trước (←)">‹</button><button id="next" aria-label="Slide sau" title="Slide sau (→)">›</button><button id="fs" aria-label="Toàn màn hình" title="Toàn màn hình (F)">⛶</button></div>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length, cur = 0;
+  slides.forEach(function (s, i) { var p = s.querySelector('.pg'); if (p) p.textContent = (i + 1) + ' / ' + total; });
+  function show(n) {
+    cur = Math.max(0, Math.min(total - 1, n));
+    slides.forEach(function (s, i) { s.classList.toggle('active', i === cur); });
+    document.getElementById('progress').style.width = ((cur + 1) / total * 100) + '%';
+    try { history.replaceState(null, '', '#' + (cur + 1)); } catch (e) {}
+  }
+  var start = parseInt((location.hash || '').replace('#', ''), 10);
+  show(isNaN(start) ? 0 : start - 1);
+  document.getElementById('prev').onclick = function (e) { e.stopPropagation(); show(cur - 1); };
+  document.getElementById('next').onclick = function (e) { e.stopPropagation(); show(cur + 1); };
+  document.getElementById('fs').onclick = function (e) {
+    e.stopPropagation();
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(cur + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(cur - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(total - 1);
+    else if (e.key === 'f' || e.key === 'F') document.getElementById('fs').click();
+  });
+  document.getElementById('deck').addEventListener('click', function (e) {
+    var r = this.getBoundingClientRect();
+    show(e.clientX - r.left < r.width * 0.3 ? cur - 1 : cur + 1);
+  });
+  var nav = document.getElementById('nav'), idleT = null;
+  function wake() { nav.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(function () { nav.classList.add('idle'); }, 2500); }
+  document.addEventListener('mousemove', wake); wake();
+  var tx = null;
+  document.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (tx === null) return; var dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) show(dx < 0 ? cur + 1 : cur - 1); tx = null;
+  });
+})();
+</script>
+</body>
+</html>
